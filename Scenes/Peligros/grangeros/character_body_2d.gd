@@ -14,7 +14,6 @@ func _physics_process(delta: float) -> void:
 	if wait == true:
 		return
 	if agent.is_navigation_finished():
-		velocity = Vector2.ZERO
 		current_Index+=1
 		$Timer2.start()
 		wait = true
@@ -42,3 +41,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func _on_timer_2_timeout() -> void:
 	wait = false
+
+
+func _on_area_2d_2_body_exited(body: Node2D) -> void:
+	persigueJugador=false

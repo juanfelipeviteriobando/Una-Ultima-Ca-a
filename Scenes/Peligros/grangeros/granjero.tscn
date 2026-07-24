@@ -9,9 +9,14 @@ radius = 6.0
 height = 12.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mng68"]
-radius = 29.427877
+radius = 47.010635
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_82v0y"]
+radius = 144.0
 
 [node name="Granjero" type="CharacterBody2D" unique_id=2116185681 node_paths=PackedStringArray("agent")]
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_txc6a")
 agent = NodePath("NavigationAgent2D")
 
@@ -19,15 +24,16 @@ agent = NodePath("NavigationAgent2D")
 wait_time = 0.5
 autostart = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2009642620]
-position = Vector2(0, 10)
-shape = SubResource("CapsuleShape2D_mng68")
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=72989903]
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_r5noh")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2009642620]
+position = Vector2(0, 6)
+shape = SubResource("CapsuleShape2D_mng68")
+
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1561817108]
+debug_enabled = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=467513058]
 collision_layer = 2
@@ -40,6 +46,14 @@ shape = SubResource("CircleShape2D_mng68")
 [node name="Timer2" type="Timer" parent="." unique_id=1795648827]
 one_shot = true
 
+[node name="Area2D2" type="Area2D" parent="." unique_id=1694490513]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=715420399]
+shape = SubResource("CircleShape2D_82v0y")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="body_exited" from="Area2D2" to="." method="_on_area_2d_2_body_exited"]
