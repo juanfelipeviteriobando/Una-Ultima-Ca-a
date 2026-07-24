@@ -16,4 +16,9 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=865586712]
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="." unique_id=1419828350]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="CharacterBody2D2" unique_id=865586712]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2" unique_id=468431657]
+shape = SubResource("CapsuleShape2D_mng68")
