@@ -29,3 +29,11 @@ func _on_timer_timeout() -> void:
 			agent.target_position=waypoints[current_Index].global_position
 	if persigueJugador==true:
 		agent.target_position=player.global_position
+
+
+func _on_area_2d_player_detected(player: Variant) -> void:
+	persigueJugador=true # Replace with function body.
+
+
+func _on_area_2d_player_lost(player: Variant) -> void:
+	persigueJugador=false # Replace with function body.
