@@ -106,15 +106,14 @@ metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 [node name="Granjero" parent="." unique_id=2116185681 node_paths=PackedStringArray("waypoints") instance=ExtResource("6_gop8n")]
 position = Vector2(269, 213)
 waypoints = [NodePath("../Node2D2/Marker2D"), NodePath("../Node2D2/Marker2D2"), NodePath("../Node2D2/Marker2D3")]
-persigueJugador = true
 
 [node name="Node2D2" type="Node2D" parent="." unique_id=215335034]
 
 [node name="Marker2D" type="Marker2D" parent="Node2D2" unique_id=2070435959]
-position = Vector2(1009, 135)
+position = Vector2(493, 247)
 
 [node name="Marker2D2" type="Marker2D" parent="Node2D2" unique_id=425147084]
-position = Vector2(703, 386)
+position = Vector2(385, 283)
 
 [node name="Marker2D3" type="Marker2D" parent="Node2D2" unique_id=1758772692]
-position = Vector2(381, 81)
+position = Vector2(323, 238)
