@@ -22,7 +22,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.96666664, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1)]
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -126,7 +126,7 @@ WalkParticles = NodePath("../GPUParticles2D")
 libraries/ = SubResource("AnimationLibrary_jmcll")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=678682848]
-modulate = Color(0.076018065, 0.5015625, 0.08817646, 1)
+modulate = Color(0.214563, 0.6328125, 0.22607447, 1)
 z_index = -1
 position = Vector2(-6.1154366e-05, 17.029387)
 emitting = false
