@@ -104,8 +104,9 @@ follow_damping_value = Vector2(0.6, 0.6)
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 
 [node name="Granjero" parent="." unique_id=2116185681 node_paths=PackedStringArray("waypoints") instance=ExtResource("6_gop8n")]
-position = Vector2(284, 121)
+position = Vector2(269, 213)
 waypoints = [NodePath("../Node2D2/Marker2D"), NodePath("../Node2D2/Marker2D2"), NodePath("../Node2D2/Marker2D3")]
+persigueJugador = true
 
 [node name="Node2D2" type="Node2D" parent="." unique_id=215335034]
 
