@@ -5,7 +5,7 @@ extends CharacterBody2D
 var SPEED = 80.0
 var NormalSpeed:float = 80.0
 var Max_Speed = 120.0
-const JUMP_VELOCITY = -400.0
+
 var current_Index:int=0
 var wait: bool = false
 var player
@@ -13,8 +13,21 @@ func _ready():
 	player=get_tree().get_first_node_in_group("Player")
 
 func _physics_process(delta: float) -> void:
+	
 	if wait == true:
 		return
+	var objetivo_rotation: float
+
+	if persigueJugador == false:
+		objetivo_rotation = ($vision.global_position.direction_to(agent.target_position)).angle()
+	else:
+		objetivo_rotation = ($vision.global_position.direction_to(player.global_position)).angle()
+
+	$vision.rotation = lerp_angle(
+		$vision.rotation,
+		objetivo_rotation,
+		5.0 * delta
+	)
 
 	if agent.is_navigation_finished():
 		velocity = Vector2.ZERO
@@ -41,7 +54,9 @@ func _physics_process(delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	if persigueJugador==false:
-		agent.target_position=waypoints[current_Index].global_position
+			if waypoints.size() <=0:
+				return
+			agent.target_position=waypoints[current_Index].global_position
 	if persigueJugador==true:
 		agent.target_position=player.global_position
 		

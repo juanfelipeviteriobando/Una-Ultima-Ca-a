@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bmajp0dnvgfs6" path="res://Scenes/Player/player.gd" id="1_ft8w5"]
 [ext_resource type="Texture2D" uid="uid://n8511amd7jpj" path="res://Sprites/Player/Caña Azucar.png" id="1_s0eop"]
 [ext_resource type="Script" uid="uid://vcxhxufa0ogy" path="res://Scenes/Player/StateMachine.gd" id="3_h54ih"]
+[ext_resource type="Script" uid="uid://dadi6s0alhsrf" path="res://Scenes/Player/variables.gd" id="4_ude3g"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_82v0y"]
 particle_flag_disable_z = true
@@ -115,11 +116,19 @@ texture = ExtResource("1_s0eop")
 position = Vector2(0, 13)
 shape = SubResource("CapsuleShape2D_mng68")
 
-[node name="Node" type="Node" parent="." unique_id=969523827 node_paths=PackedStringArray("Player", "Animations", "WalkParticles")]
+[node name="Node" type="Node" parent="." unique_id=969523827 node_paths=PackedStringArray("Player", "Animations", "WalkParticles", "variable")]
 script = ExtResource("3_h54ih")
 Player = NodePath("..")
 Animations = NodePath("../AnimationPlayer")
 WalkParticles = NodePath("../GPUParticles2D")
+variable = NodePath("../Variables")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1778744295]
 libraries/ = SubResource("AnimationLibrary_jmcll")
+
+[node name="Variables" type="Node" parent="." unique_id=45580769]
+script = ExtResource("4_ude3g")
+dash_duration = 0.05
+dash_Multiplier = 3.0
+
+[connection signal="dash" from="." to="Node" method="_on_player_dash"]
