@@ -5,3 +5,4 @@
 [node name="granjero" type="Node2D" unique_id=403923378]
 
 [node name="Granjero" parent="." unique_id=2116185681 instance=ExtResource("1_kkggx")]
+Max_Speed = 100.0

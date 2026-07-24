@@ -3,8 +3,9 @@ extends CharacterBody2D
 @export var agent: NavigationAgent2D
 @export var persigueJugador:bool=false
 var SPEED = 80.0
-var NormalSpeed:float = 80.0
-var Max_Speed = 120.0
+@export_category("velocidades")
+@export var NormalSpeed:float = 80.0
+@export var Max_Speed = 120.0
 
 var current_Index:int=0
 var wait: bool = false
