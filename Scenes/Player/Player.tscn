@@ -101,6 +101,7 @@ Sprite = NodePath("Sprite2D")
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=678682848]
 modulate = Color(0.019607844, 0.16470589, 0.023529412, 1)
 position = Vector2(-6.1154366e-05, 17.029387)
+emitting = false
 amount = 15
 lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_82v0y")
