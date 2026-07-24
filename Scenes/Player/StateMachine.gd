@@ -4,6 +4,8 @@ extends Node
 @export var WalkParticles:GPUParticles2D
 var Current_State: STATE = STATE.IDLE
 
+var scale_tween
+
 enum STATE {
 	IDLE,
 	MOVING
@@ -25,6 +27,8 @@ func _physics_process(delta: float) -> void:
 			Animations.play("Idle")
 			Player.velocity = Player.velocity.move_toward(Vector2.ZERO, Player.Friction * delta)
 		STATE.MOVING:
+			scale_tween = create_tween()
+			scale_tween.tween_property(Player, "scale", Vector2(1.0, 1.0), 0.4)
 			WalkParticles.emitting = true
 			Animations.play("Moving")
 			Player.velocity = Player.velocity.move_toward(Player.Input_Dir * Player.Speed, Player.Aceleration * delta)
