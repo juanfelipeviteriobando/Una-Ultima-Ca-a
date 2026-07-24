@@ -15,3 +15,5 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=865586712]
