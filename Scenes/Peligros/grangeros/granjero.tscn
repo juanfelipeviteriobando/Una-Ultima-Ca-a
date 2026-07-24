@@ -12,11 +12,7 @@ script = ExtResource("1_txc6a")
 agent = NodePath("NavigationAgent2D")
 
 [node name="Timer" type="Timer" parent="." unique_id=347209944]
-<<<<<<< HEAD
 wait_time = 0.3
-=======
-wait_time = 0.5
->>>>>>> d0d9f94f8552d5a3c1ed4923ee3552b13ad94652
 autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2009642620]
