@@ -106,6 +106,8 @@ metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 [node name="Granjero" parent="." unique_id=2116185681 node_paths=PackedStringArray("waypoints") groups=["Player"] instance=ExtResource("6_gop8n")]
 position = Vector2(269, 213)
 waypoints = [NodePath("../Node2D2/Marker2D"), NodePath("../Node2D2/Marker2D2"), NodePath("../Node2D2/Marker2D3")]
+persigueJugador = true
+SPEED = 100.0
 
 [node name="Node2D2" type="Node2D" parent="." unique_id=215335034]
 

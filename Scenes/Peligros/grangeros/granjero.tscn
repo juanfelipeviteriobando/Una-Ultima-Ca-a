@@ -10,9 +10,10 @@ height = 12.0
 [node name="Granjero" type="CharacterBody2D" unique_id=2116185681 node_paths=PackedStringArray("agent")]
 script = ExtResource("1_txc6a")
 agent = NodePath("NavigationAgent2D")
+persigueJugador = null
+SPEED = null
 
 [node name="Timer" type="Timer" parent="." unique_id=347209944]
-wait_time = 0.5
 autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2009642620]

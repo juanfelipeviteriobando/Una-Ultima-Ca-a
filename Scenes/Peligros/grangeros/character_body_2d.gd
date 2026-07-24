@@ -10,7 +10,6 @@ func _ready():
 	player=get_tree().get_first_node_in_group("Player")
 
 func _physics_process(delta: float) -> void:
-	var MinDistance:float=5
 
 	if agent.is_navigation_finished():
 		current_Index+=1
