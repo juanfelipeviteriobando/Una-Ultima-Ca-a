@@ -28,7 +28,7 @@ func _physics_process(delta: float) -> void:
 			Player.velocity = Player.velocity.move_toward(Vector2.ZERO, Player.Friction * delta)
 		STATE.MOVING:
 			scale_tween = create_tween()
-			scale_tween.tween_property(Player, "scale", Vector2(1.0, 1.0), 0.4)
+			scale_tween.tween_property(Player, "scale", Vector2(1.0, 1.0), 0.2)
 			WalkParticles.emitting = true
 			Animations.play("Moving")
 			Player.velocity = Player.velocity.move_toward(Player.Input_Dir * Player.Speed, Player.Aceleration * delta)
