@@ -2,54 +2,46 @@ extends CharacterBody2D
 @export var waypoints:Array[Marker2D]
 @export var agent: NavigationAgent2D
 @export var persigueJugador:bool=false
-var is_waiting: bool = false
 const SPEED = 80.0
 const JUMP_VELOCITY = -400.0
 var current_Index:int=0
+var wait: bool = false
 var player
 func _ready():
 	player=get_tree().get_first_node_in_group("Player")
 
 func _physics_process(delta: float) -> void:
-	var direction= agent.get_next_path_position() - global_position
-	var Distance = direction.length()
-	
-	if is_waiting == true:
+	if wait == true:
 		return
-	
 	if agent.is_navigation_finished():
-		current_Index += 1
-		velocity = Vector2.ZERO
+		current_Index+=1
 		$Timer2.start()
-		is_waiting = true
-		
+		wait = true
 		if current_Index>=waypoints.size():
 			current_Index=0
 		
 	
-
+	var direction=agent.get_next_path_position()-global_position
 	velocity=direction.normalized()*SPEED
 	move_and_slide()
 
 
 
 func _on_timer_timeout() -> void:
-	if waypoints.size()<=0:
-		return
 	if persigueJugador==false:
-			var Target_position = waypoints[current_Index].global_position
-			agent.target_position=Target_position
+			agent.target_position=waypoints[current_Index].global_position
 	if persigueJugador==true:
 		agent.target_position=player.global_position
 
 
 
-func _on_area_2d_player_detected(player: Variant) -> void:
+func _on_area_2d_body_entered(body: Node2D) -> void:
 	persigueJugador=true # Replace with function body.
 
 
-func _on_area_2d_player_lost(player: Variant) -> void:
-	persigueJugador=false # Replace with function body.
-
 func _on_timer_2_timeout() -> void:
-	is_waiting = false
+	wait = false
+
+
+func _on_area_2d_2_body_exited(body: Node2D) -> void:
+	persigueJugador=false
