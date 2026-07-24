@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cdc6srswm4qay"]
+
+[ext_resource type="Script" uid="uid://bfua4la1fg2aw" path="res://Scenes/Peligros/grangeros/character_body_2d.gd" id="1_txc6a"]
+[ext_resource type="Texture2D" uid="uid://cym36xnotha5e" path="res://Sprites/placeholders/granguero placeholder.png" id="2_r5noh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mng68"]
+
+[node name="Granjero" type="CharacterBody2D" unique_id=2116185681]
+script = ExtResource("1_txc6a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2009642620]
+shape = SubResource("CapsuleShape2D_mng68")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=72989903]
+texture = ExtResource("2_r5noh")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1561817108]
