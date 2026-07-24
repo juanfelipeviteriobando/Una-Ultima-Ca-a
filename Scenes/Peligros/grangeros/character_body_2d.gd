@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var agent: NavigationAgent2D
 @export var persigueJugador:bool=false
 @export var SPEED = 100.0
+
 var current_Index:int=0
 var player
 func _ready():
@@ -20,6 +21,7 @@ func _physics_process(delta: float) -> void:
 	var direction=agent.get_next_path_position()-global_position
 	velocity=direction.normalized()*SPEED
 	move_and_slide()
+	
 
 
 
