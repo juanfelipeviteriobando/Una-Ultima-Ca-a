@@ -11,11 +11,9 @@ func _ready():
 	player=get_tree().get_first_node_in_group("Player")
 
 func _physics_process(delta: float) -> void:
-	if wait == true:
-		return
 	if agent.is_navigation_finished():
+		velocity = Vector2.ZERO
 		current_Index+=1
-		$Timer2.start()
 		wait = true
 		if current_Index>=waypoints.size():
 			current_Index=0
@@ -29,9 +27,10 @@ func _physics_process(delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	if persigueJugador==false:
-			agent.target_position=waypoints[current_Index].global_position
+		agent.target_position=waypoints[current_Index].global_position
 	if persigueJugador==true:
 		agent.target_position=player.global_position
+		
 
 
 

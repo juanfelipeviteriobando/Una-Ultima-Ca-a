@@ -44,6 +44,7 @@ script = ExtResource("3_r5noh")
 shape = SubResource("CircleShape2D_mng68")
 
 [node name="Timer2" type="Timer" parent="." unique_id=1795648827]
+wait_time = 0.5
 one_shot = true
 
 [node name="Area2D2" type="Area2D" parent="." unique_id=1694490513]
