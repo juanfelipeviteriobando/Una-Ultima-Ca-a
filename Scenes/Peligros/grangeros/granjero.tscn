@@ -9,7 +9,7 @@ radius = 6.0
 height = 12.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mng68"]
-radius = 74.0
+radius = 29.427877
 
 [node name="Granjero" type="CharacterBody2D" unique_id=2116185681 node_paths=PackedStringArray("agent")]
 script = ExtResource("1_txc6a")
@@ -38,5 +38,4 @@ script = ExtResource("3_r5noh")
 shape = SubResource("CircleShape2D_mng68")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="player_detected" from="Area2D" to="." method="_on_area_2d_player_detected"]
-[connection signal="player_lost" from="Area2D" to="." method="_on_area_2d_player_lost"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

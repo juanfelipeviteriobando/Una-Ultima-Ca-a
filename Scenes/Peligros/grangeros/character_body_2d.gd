@@ -10,7 +10,7 @@ func _ready():
 	player=get_tree().get_first_node_in_group("Player")
 
 func _physics_process(delta: float) -> void:
-	var MinDistance:float=5
+	
 
 	if agent.is_navigation_finished():
 		current_Index+=1
@@ -31,9 +31,6 @@ func _on_timer_timeout() -> void:
 		agent.target_position=player.global_position
 
 
-func _on_area_2d_player_detected(player: Variant) -> void:
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
 	persigueJugador=true # Replace with function body.
-
-
-func _on_area_2d_player_lost(player: Variant) -> void:
-	persigueJugador=false # Replace with function body.
