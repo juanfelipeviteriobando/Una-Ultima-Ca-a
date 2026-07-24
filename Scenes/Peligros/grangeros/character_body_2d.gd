@@ -5,7 +5,7 @@ extends CharacterBody2D
 var SPEED = 80.0
 var NormalSpeed:float = 80.0
 var Max_Speed = 120.0
-
+const JUMP_VELOCITY = -400.0
 var current_Index:int=0
 var wait: bool = false
 var player
@@ -49,19 +49,7 @@ func _on_timer_timeout() -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	var estado_de_espacio = get_world_2d().direct_space_state
-	var query = PhysicsRayQueryParameters2D.create(
-	global_position,player.global_position)
-	query.exclude = [self]
-	query.collision_mask = 1 << 1 # Capa de obstáculos
-
-	var resultado = estado_de_espacio.intersect_ray(query)
-
-	if resultado.is_empty():
-		persigueJugador=true
-	else:
-		persigueJugador=false
-	
+	persigueJugador=true # Replace with function body.
 
 
 func _on_timer_2_timeout() -> void:

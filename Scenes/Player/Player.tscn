@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://omytb7xdltmj"]
+
+[ext_resource type="Script" uid="uid://bmajp0dnvgfs6" path="res://Scenes/Player/player.gd" id="1_ft8w5"]
+[ext_resource type="Texture2D" uid="uid://n8511amd7jpj" path="res://Sprites/Player/Caña Azucar.png" id="1_s0eop"]
+[ext_resource type="Script" uid="uid://vcxhxufa0ogy" path="res://Scenes/Player/StateMachine.gd" id="3_h54ih"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_82v0y"]
+particle_flag_disable_z = true
+direction = Vector3(1, -4.815, 0)
+initial_velocity_max = 58.82
+gravity = Vector3(0, 98, 0)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mng68"]
+radius = 3.0
+height = 6.0
+
+[sub_resource type="Animation" id="Animation_jmcll"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.96666664, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_h54ih"]
+resource_name = "Moving"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 0.2, 0.36666667, 0.53333336),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.17627825445142767, 0.0, -0.17627825445142767]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.03333333),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ude3g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jmcll"]
+_data = {
+&"Idle": SubResource("Animation_jmcll"),
+&"Moving": SubResource("Animation_h54ih"),
+&"RESET": SubResource("Animation_ude3g")
+}
+
+[node name="Player" type="CharacterBody2D" unique_id=1763163025 node_paths=PackedStringArray("Sprite") groups=["Player"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_ft8w5")
+Sprite = NodePath("Sprite2D")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=678682848]
+modulate = Color(0.019607844, 0.16470589, 0.023529412, 1)
+position = Vector2(-6.1154366e-05, 17.029387)
+emitting = false
+amount = 15
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_82v0y")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2123958122]
+texture = ExtResource("1_s0eop")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1388177645]
+position = Vector2(0, 13)
+shape = SubResource("CapsuleShape2D_mng68")
+
+[node name="Node" type="Node" parent="." unique_id=969523827 node_paths=PackedStringArray("Player", "Animations", "WalkParticles")]
+script = ExtResource("3_h54ih")
+Player = NodePath("..")
+Animations = NodePath("../AnimationPlayer")
+WalkParticles = NodePath("../GPUParticles2D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1778744295]
+libraries/ = SubResource("AnimationLibrary_jmcll")
