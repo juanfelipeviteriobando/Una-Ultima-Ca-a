@@ -5,15 +5,19 @@ extends CharacterBody2D
 const SPEED = 80.0
 const JUMP_VELOCITY = -400.0
 var current_Index:int=0
+var wait: bool = false
 var player
 func _ready():
 	player=get_tree().get_first_node_in_group("Player")
 
 func _physics_process(delta: float) -> void:
-	
-
+	if wait == true:
+		return
 	if agent.is_navigation_finished():
+		velocity = Vector2.ZERO
 		current_Index+=1
+		$Timer2.start()
+		wait = true
 		if current_Index>=waypoints.size():
 			current_Index=0
 		
@@ -34,3 +38,7 @@ func _on_timer_timeout() -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	persigueJugador=true # Replace with function body.
+
+
+func _on_timer_2_timeout() -> void:
+	wait = false

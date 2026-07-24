@@ -37,5 +37,9 @@ script = ExtResource("3_r5noh")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1308186457]
 shape = SubResource("CircleShape2D_mng68")
 
+[node name="Timer2" type="Timer" parent="." unique_id=1795648827]
+one_shot = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
