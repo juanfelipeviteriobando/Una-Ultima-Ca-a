@@ -2,7 +2,9 @@ extends CharacterBody2D
 @export var waypoints:Array[Marker2D]
 @export var agent: NavigationAgent2D
 @export var persigueJugador:bool=false
-const SPEED = 80.0
+var SPEED = 80.0
+var NormalSpeed:float = 80.0
+var Max_Speed = 120.0
 const JUMP_VELOCITY = -400.0
 var current_Index:int=0
 var wait: bool = false
@@ -13,15 +15,25 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	if wait == true:
 		return
+
 	if agent.is_navigation_finished():
+		velocity = Vector2.ZERO
 		current_Index+=1
-		$Timer2.start()
-		wait = true
+		if persigueJugador == false:
+			wait = true
+			$Timer2.start()
+		else:
+			wait = false
+			$Timer2.stop()
 		if current_Index>=waypoints.size():
 			current_Index=0
 		
 	
 	var direction=agent.get_next_path_position()-global_position
+	if persigueJugador == true:
+		SPEED = Max_Speed
+	else:
+		SPEED = NormalSpeed
 	velocity=direction.normalized()*SPEED
 	move_and_slide()
 
@@ -29,9 +41,10 @@ func _physics_process(delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	if persigueJugador==false:
-			agent.target_position=waypoints[current_Index].global_position
+		agent.target_position=waypoints[current_Index].global_position
 	if persigueJugador==true:
 		agent.target_position=player.global_position
+		
 
 
 
