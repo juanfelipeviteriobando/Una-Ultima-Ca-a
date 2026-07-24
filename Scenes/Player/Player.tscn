@@ -100,6 +100,12 @@ _data = {
 &"RESET": SubResource("Animation_ude3g")
 }
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_82v0y"]
+particle_flag_disable_z = true
+direction = Vector3(1, -4.815, 0)
+initial_velocity_max = 58.82
+gravity = Vector3(0, 98, 0)
+
 [node name="Player" type="CharacterBody2D" unique_id=1763163025 node_paths=PackedStringArray("Sprite")]
 script = ExtResource("1_ft8w5")
 Sprite = NodePath("Sprite2D")
@@ -110,10 +116,20 @@ texture = ExtResource("1_s0eop")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1388177645]
 shape = SubResource("CapsuleShape2D_mng68")
 
-[node name="Node" type="Node" parent="." unique_id=969523827 node_paths=PackedStringArray("Player", "Animations")]
+[node name="Node" type="Node" parent="." unique_id=969523827 node_paths=PackedStringArray("Player", "Animations", "WalkParticles")]
 script = ExtResource("3_h54ih")
 Player = NodePath("..")
 Animations = NodePath("../AnimationPlayer")
+WalkParticles = NodePath("../GPUParticles2D")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1778744295]
 libraries/ = SubResource("AnimationLibrary_jmcll")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=678682848]
+modulate = Color(0.076018065, 0.5015625, 0.08817646, 1)
+z_index = -1
+position = Vector2(-6.1154366e-05, 17.029387)
+emitting = false
+amount = 15
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_82v0y")
