@@ -4,7 +4,7 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var current_Index:int=0
-
+var persigueJugador:bool=false
 func _physics_process(delta: float) -> void:
 	var MinDistance:float=5
 
@@ -17,3 +17,8 @@ func _physics_process(delta: float) -> void:
 	var direction=agent.get_next_path_position()-global_position
 	velocity=direction.normalized()*SPEED
 	move_and_slide()
+
+
+
+func _on_timer_timeout() -> void:
+	pass # Replace with function body.

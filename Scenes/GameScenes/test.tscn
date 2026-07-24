@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://btga4txyfewlm" path="res://Tileset/Tileset.png" id="3_gop8n"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="4_e4wcu"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_bxen2"]
+[ext_resource type="PackedScene" uid="uid://cdc6srswm4qay" path="res://Scenes/Peligros/grangeros/granjero.tscn" id="6_gop8n"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_f16rm"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -81,3 +82,18 @@ tween_resource = SubResource("Resource_r3ac6")
 follow_damping = true
 follow_damping_value = Vector2(0.6, 0.6)
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
+
+[node name="Granjero" parent="." unique_id=2116185681 node_paths=PackedStringArray("waypoints") instance=ExtResource("6_gop8n")]
+position = Vector2(284, 121)
+waypoints = [NodePath("../Node2D2/Marker2D"), NodePath("../Node2D2/Marker2D2"), NodePath("../Node2D2/Marker2D3")]
+
+[node name="Node2D2" type="Node2D" parent="." unique_id=215335034]
+
+[node name="Marker2D" type="Marker2D" parent="Node2D2" unique_id=2070435959]
+position = Vector2(1009, 135)
+
+[node name="Marker2D2" type="Marker2D" parent="Node2D2" unique_id=425147084]
+position = Vector2(703, 386)
+
+[node name="Marker2D3" type="Marker2D" parent="Node2D2" unique_id=1758772692]
+position = Vector2(381, 81)
