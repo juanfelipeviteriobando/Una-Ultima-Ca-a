@@ -1,8 +1,15 @@
 [gd_scene format=3 uid="uid://omytb7xdltmj"]
 
+[ext_resource type="Texture2D" uid="uid://n8511amd7jpj" path="res://Sprites/Player/Caña Azucar.png" id="1_s0eop"]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mng68"]
+radius = 3.0
+height = 32.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1763163025]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2123958122]
+texture = ExtResource("1_s0eop")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1388177645]
 shape = SubResource("CapsuleShape2D_mng68")
