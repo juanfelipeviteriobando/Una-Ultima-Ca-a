@@ -14,6 +14,7 @@ agent = NodePath("NavigationAgent2D")
 
 [node name="Timer" type="Timer" parent="." unique_id=347209944]
 wait_time = 0.5
+autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2009642620]
 position = Vector2(0, 10)
