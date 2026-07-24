@@ -11,5 +11,7 @@
 
 [node name="Player" parent="." unique_id=1763163025 instance=ExtResource("1_vcbko")]
 position = Vector2(249, 168)
+script = null
 
-[node name="Node2D" parent="." unique_id=403923378 instance=ExtResource("2_xoyev")]
+[node name="granjero" parent="." unique_id=403923378 instance=ExtResource("2_xoyev")]
+position = Vector2(605, 208)
