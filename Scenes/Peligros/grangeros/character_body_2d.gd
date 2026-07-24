@@ -34,6 +34,8 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:
+	if waypoints.size()<=0:
+		return
 	if persigueJugador==false:
 			var Target_position = waypoints[current_Index].global_position
 			agent.target_position=Target_position
@@ -41,14 +43,13 @@ func _on_timer_timeout() -> void:
 		agent.target_position=player.global_position
 
 
-<<<<<<< HEAD
+
 func _on_area_2d_player_detected(player: Variant) -> void:
 	persigueJugador=true # Replace with function body.
 
 
 func _on_area_2d_player_lost(player: Variant) -> void:
 	persigueJugador=false # Replace with function body.
-=======
+
 func _on_timer_2_timeout() -> void:
 	is_waiting = false
->>>>>>> 875aadf276fe01f4a7775cf178916afbc823a590

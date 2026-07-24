@@ -12,11 +12,14 @@ height = 12.0
 radius = 74.0
 
 [node name="Granjero" type="CharacterBody2D" unique_id=2116185681 node_paths=PackedStringArray("agent")]
-collision_layer = 2
 script = ExtResource("1_txc6a")
 agent = NodePath("NavigationAgent2D")
 
 [node name="Timer" type="Timer" parent="." unique_id=347209944]
+wait_time = 0.5
+autostart = true
+
+[node name="Timer2" type="Timer" parent="." unique_id=929786923]
 wait_time = 0.5
 autostart = true
 
@@ -29,23 +32,17 @@ scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_r5noh")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1561817108]
-debug_enabled = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=467513058]
-collision_layer = 2
-collision_mask = 4
+collision_layer = 7
+collision_mask = 7
+priority = 1
 script = ExtResource("3_r5noh")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1308186457]
 shape = SubResource("CircleShape2D_mng68")
 
-[node name="Timer2" type="Timer" parent="." unique_id=1582104420]
-one_shot = true
-
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-<<<<<<< HEAD
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
 [connection signal="player_detected" from="Area2D" to="." method="_on_area_2d_player_detected"]
 [connection signal="player_lost" from="Area2D" to="." method="_on_area_2d_player_lost"]
-=======
-[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
->>>>>>> 875aadf276fe01f4a7775cf178916afbc823a590
