@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://br24wp26bmtvu"]
+
+[ext_resource type="PackedScene" uid="uid://omytb7xdltmj" path="res://Scenes/Player/Player.tscn" id="1_vcbko"]
+[ext_resource type="PackedScene" uid="uid://bvmqb5ll63yxa" path="res://Scenes/Peligros/grangeros/node_2d.tscn" id="2_xoyev"]
+
+[node name="Node2D" type="Node2D" unique_id=891724614]
+
+[node name="Node2D2" type="Node2D" parent="." unique_id=704030631]
+
+[node name="Marker2D" type="Marker2D" parent="Node2D2" unique_id=321939288]
+
+[node name="Player" parent="." unique_id=1763163025 instance=ExtResource("1_vcbko")]
+position = Vector2(249, 168)
+script = null
+
+[node name="granjero" parent="." unique_id=403923378 instance=ExtResource("2_xoyev")]
+position = Vector2(605, 208)
