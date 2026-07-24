@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bvmqb5ll63yxa"]
+
+[ext_resource type="PackedScene" uid="uid://cdc6srswm4qay" path="res://Scenes/Peligros/grangeros/granjero.tscn" id="1_kkggx"]
+
+[node name="granjero" type="Node2D" unique_id=403923378]
+
+[node name="Granjero" parent="." unique_id=2116185681 instance=ExtResource("1_kkggx")]
