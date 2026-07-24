@@ -1,5 +1,6 @@
 extends Node
 @export var Player: CharacterBody2D
+@export var Animations: AnimationPlayer
 
 var Current_State: STATE = STATE.IDLE
 
@@ -20,6 +21,8 @@ func _physics_process(delta: float) -> void:
 		Current_State = STATE.IDLE
 	match Current_State:
 		STATE.IDLE:
+			Animations.play("Idle")
 			Player.velocity = Player.velocity.move_toward(Vector2.ZERO, Player.Friction * delta)
 		STATE.MOVING:
+			Animations.play("Moving")
 			Player.velocity = Player.velocity.move_toward(Player.Input_Dir * Player.Speed, Player.Aceleration * delta)
