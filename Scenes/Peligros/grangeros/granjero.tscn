@@ -7,11 +7,11 @@
 radius = 6.0
 height = 12.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_mng68"]
+
 [node name="Granjero" type="CharacterBody2D" unique_id=2116185681 node_paths=PackedStringArray("agent")]
 script = ExtResource("1_txc6a")
 agent = NodePath("NavigationAgent2D")
-persigueJugador = null
-SPEED = null
 
 [node name="Timer" type="Timer" parent="." unique_id=347209944]
 autostart = true
@@ -25,5 +25,10 @@ scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_r5noh")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1561817108]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1193250033]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=324633946]
+shape = SubResource("CircleShape2D_mng68")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

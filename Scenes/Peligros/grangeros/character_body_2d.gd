@@ -3,7 +3,6 @@ extends CharacterBody2D
 @export var agent: NavigationAgent2D
 @export var persigueJugador:bool=false
 @export var SPEED = 100.0
-const JUMP_VELOCITY = -400.0
 var current_Index:int=0
 var player
 func _ready():
