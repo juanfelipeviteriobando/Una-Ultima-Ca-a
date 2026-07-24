@@ -1,7 +1,7 @@
 extends Node
 @export var Player: CharacterBody2D
 @export var Animations: AnimationPlayer
-
+@export var WalkParticles:GPUParticles2D
 var Current_State: STATE = STATE.IDLE
 
 enum STATE {
@@ -21,8 +21,10 @@ func _physics_process(delta: float) -> void:
 		Current_State = STATE.IDLE
 	match Current_State:
 		STATE.IDLE:
+			WalkParticles.emitting = false
 			Animations.play("Idle")
 			Player.velocity = Player.velocity.move_toward(Vector2.ZERO, Player.Friction * delta)
 		STATE.MOVING:
+			WalkParticles.emitting = true
 			Animations.play("Moving")
 			Player.velocity = Player.velocity.move_toward(Player.Input_Dir * Player.Speed, Player.Aceleration * delta)
