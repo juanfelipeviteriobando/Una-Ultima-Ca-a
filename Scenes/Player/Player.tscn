@@ -1,9 +1,8 @@
-[gd_scene format=3 uid="uid://coq3maw37nirb"]
+[gd_scene format=3 uid="uid://omytb7xdltmj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mng68"]
 
 [node name="Node2D" type="CharacterBody2D" unique_id=1763163025]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1388177645]
-position = Vector2(563, 185)
 shape = SubResource("CapsuleShape2D_mng68")
