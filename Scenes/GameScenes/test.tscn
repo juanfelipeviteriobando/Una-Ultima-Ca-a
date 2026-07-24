@@ -110,10 +110,10 @@ waypoints = [NodePath("../Node2D2/Marker2D"), NodePath("../Node2D2/Marker2D2"), 
 [node name="Node2D2" type="Node2D" parent="." unique_id=215335034]
 
 [node name="Marker2D" type="Marker2D" parent="Node2D2" unique_id=2070435959]
-position = Vector2(493, 247)
+position = Vector2(1009, 135)
 
 [node name="Marker2D2" type="Marker2D" parent="Node2D2" unique_id=425147084]
-position = Vector2(385, 283)
+position = Vector2(703, 386)
 
 [node name="Marker2D3" type="Marker2D" parent="Node2D2" unique_id=1758772692]
-position = Vector2(323, 238)
+position = Vector2(381, 81)
