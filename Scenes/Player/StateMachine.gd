@@ -9,6 +9,13 @@ var Current_State: STATE = STATE.IDLE
 @export var variable:variables
 var scale_tween
 var Dash_Direction := Vector2.ZERO
+
+var Granjero
+
+@export_category("Boost")
+@export var BoostScript: Node
+var LoseBoostPoint: float = 0.2
+var LoseDashPoint: float = 3.0
 enum STATE {
 	IDLE,
 	MOVING,
@@ -16,7 +23,7 @@ enum STATE {
 }
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	Granjero = get_tree().get_first_node_in_group("Enemigo")
 func _on_player_dash() -> void:
 	if not variable.can_dash:
 		return
@@ -36,6 +43,12 @@ func Dashcooldown():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	if BoostScript.ActualBoost <= BoostScript.MinBoost:
+		Granjero.persigueJugador = true
+		Player.velocity = Vector2.ZERO
+		Current_State = STATE.IDLE
+		Animations.play("Idle")
+		return
 	if Current_State != STATE.Dash:
 		if Player.Input_Dir == Vector2.ZERO:
 			Current_State = STATE.IDLE
@@ -57,10 +70,12 @@ func estado_Idle(delta: float) -> void:
 
 func estado_Moving(delta: float) -> void:
 	MoveCaracteristics()
+	BoostScript.LoseBoost(LoseBoostPoint)
 	Player.velocity = Player.velocity.move_toward(Player.Input_Dir * Player.Speed, Player.Aceleration * delta)
 
 func estado_Dash(delta: float) -> void:
 	MoveCaracteristics()
+	BoostScript.LoseBoost(LoseDashPoint)
 	Player.velocity = Dash_Direction* Player.Speed*variable.dash_Multiplier
 
 
@@ -69,3 +84,6 @@ func MoveCaracteristics():
 	scale_tween.tween_property(Player, "scale", Vector2(1.0, 1.0), 0.2)
 	WalkParticles.emitting = true
 	Animations.play("Moving")
+
+func BoostLosted():
+	pass
