@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bn8mk5sxf7n0s"]
+
+[ext_resource type="Script" path="res://Scenes/Objects/water.gd" id="1_c5jd4"]
+[ext_resource type="Texture2D" uid="uid://cu11a2anfgptm" path="res://Sprites/UI o Objetos/Water.png" id="1_po638"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_82v0y"]
+radius = 18.027756
+
+[node name="Water" type="Area2D" unique_id=1059669805]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("1_c5jd4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1795739490]
+texture = ExtResource("1_po638")
+offset = Vector2(-0.415, -2.785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=595958956]
+shape = SubResource("CircleShape2D_82v0y")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
