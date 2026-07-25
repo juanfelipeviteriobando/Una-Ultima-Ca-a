@@ -40,6 +40,7 @@ func _physics_process(delta: float) -> void:
 			wait = true
 			$Timer2.start()
 		else:
+			cambiar_estado(EstadoIA.PERSIGUIENDO)
 			wait = false
 			$Timer2.stop()
 		if current_Index>=waypoints.size():
@@ -102,7 +103,20 @@ func _on_area_2d_2_body_exited(body: Node2D) -> void:
 	await get_tree().create_timer(1).timeout
 	persigueJugador=false
 	nivel_sospecha=0
+	
+enum EstadoIA {
+	PATRULLANDO,
+	SOSPECHANDO,
+	INVESTIGANDO,
+	PERSIGUIENDO
+}
 
+var estado_actual = EstadoIA.PATRULLANDO
+var tiempo_estado := 0.0
+func cambiar_estado(nuevo_estado):
+	if estado_actual != nuevo_estado:
+		estado_actual = nuevo_estado
+		tiempo_estado = 0
 
 func _on_vision_player_suspicious(player: Variant) -> void:
 	if persigueJugador:
@@ -111,11 +125,12 @@ func _on_vision_player_suspicious(player: Variant) -> void:
 	nivel_sospecha += 1
 
 	match nivel_sospecha:
-		
+		0:
+			cambiar_estado(EstadoIA.PATRULLANDO)
 		# Primera vez que lo ve
 		1:
 			wait = true
-			
+			cambiar_estado(EstadoIA.SOSPECHANDO)
 			await get_tree().create_timer(5).timeout
 			wait = false
 
@@ -123,7 +138,7 @@ func _on_vision_player_suspicious(player: Variant) -> void:
 		# Segunda vez: investigar cerca del jugador
 		2:
 			wait = false
-			
+			cambiar_estado(EstadoIA.INVESTIGANDO)
 			posicion_investigar = player.global_position + Vector2(40, 40)
 			agent.target_position = posicion_investigar
 			
@@ -132,5 +147,6 @@ func _on_vision_player_suspicious(player: Variant) -> void:
 
 		# Tercera vez: persecución
 		3:
+			EstadoIA.PERSIGUIENDO
 			persigueJugador = true
 			wait = false

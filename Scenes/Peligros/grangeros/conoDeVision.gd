@@ -45,7 +45,7 @@ var ya_detectado := false
 
 func _process(delta):
 	# sospecha que se mueve
-	if objetivo.velocity.length() > 5 and puede_sospechar:
+	if objetivo&&objetivo.velocity.length() > 5 and puede_sospechar:
 		puede_sospechar = false
 		
 		look_at(objetivo.global_position)
