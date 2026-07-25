@@ -39,7 +39,7 @@ func _physics_process(delta: float) -> void:
 		if persigueJugador == false:
 			wait = true
 			$Timer2.start()
-		else:
+		elif persigueJugador == true:
 			cambiar_estado(EstadoIA.PERSIGUIENDO)
 			wait = false
 			$Timer2.stop()

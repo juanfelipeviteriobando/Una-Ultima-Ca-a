@@ -73,13 +73,14 @@ _data = {
 &"RESET": SubResource("Animation_ude3g")
 }
 
-[node name="Player" type="CharacterBody2D" unique_id=1763163025 node_paths=PackedStringArray("Sprite") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1763163025 node_paths=PackedStringArray("Sprite", "BoostScript") groups=["Player"]]
 collision_layer = 4
 collision_mask = 11
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_ft8w5")
 Sprite = NodePath("Sprite2D")
+BoostScript = NodePath("BoostScript")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=678682848]
 modulate = Color(0.019607844, 0.16470589, 0.023529412, 1)

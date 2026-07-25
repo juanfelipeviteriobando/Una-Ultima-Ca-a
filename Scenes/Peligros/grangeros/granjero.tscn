@@ -17,7 +17,6 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_txc6a")
 agent = NodePath("NavigationAgent2D")
-Max_Speed = 0.0
 
 [node name="Timer" type="Timer" parent="." unique_id=347209944]
 autostart = true
@@ -58,6 +57,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Panel" type="Panel" parent="." unique_id=347353200]
+visible = false
 offset_left = -19.0
 offset_top = -54.0
 offset_right = 21.0
