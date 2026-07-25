@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bdid5gxd7dxh1"]
+
+[ext_resource type="Script" uid="uid://c6j2ik54qfd5a" path="res://Scenes/GameScenes/IADeSeguimientoSimple.gd" id="1_nu78p"]
+[ext_resource type="Script" uid="uid://dilweu4fs3tfd" path="res://Scenes/Peligros/peligros estaticos/nodoDañar.gd" id="2_alljl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mng68"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00lfu"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1858532645 node_paths=PackedStringArray("area")]
+script = ExtResource("1_nu78p")
+area = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1616597509]
+script = ExtResource("2_alljl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=229640533]
+shape = SubResource("RectangleShape2D_mng68")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=280450892]
+shape = SubResource("RectangleShape2D_00lfu")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

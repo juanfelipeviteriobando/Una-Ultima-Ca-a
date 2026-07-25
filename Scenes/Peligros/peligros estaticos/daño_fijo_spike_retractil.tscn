@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c0ket5o1e6h5y"]
+
+[ext_resource type="Script" uid="uid://b1woc7w7kkhqc" path="res://Scenes/GameScenes/daño_fijo_spike_retractil.gd" id="1_gj7fc"]
+[ext_resource type="Script" uid="uid://dilweu4fs3tfd" path="res://Scenes/Peligros/peligros estaticos/nodoDañar.gd" id="2_ibrs3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mng68"]
+radius = 10.049875
+
+[node name="daño fijo spike retractil" type="Node2D" unique_id=1902753410]
+script = ExtResource("1_gj7fc")
+
+[node name="Timer" type="Timer" parent="." unique_id=154555611]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1473394248]
+collision_mask = 4
+script = ExtResource("2_ibrs3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=536270326]
+shape = SubResource("CircleShape2D_mng68")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
