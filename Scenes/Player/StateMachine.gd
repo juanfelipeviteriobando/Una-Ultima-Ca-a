@@ -16,6 +16,10 @@ var Granjero
 @export var BoostScript: Node
 var LoseBoostPoint: float = 0.2
 var LoseDashPoint: float = 3.0
+
+@export_category("WaterBar")
+@export var WaterScript: Node
+var WaterAmount: float = 50.0
 enum STATE {
 	IDLE,
 	MOVING,
@@ -80,8 +84,6 @@ func estado_Dash(delta: float) -> void:
 
 
 func MoveCaracteristics():
-	scale_tween = create_tween()
-	scale_tween.tween_property(Player, "scale", Vector2(1.0, 1.0), 0.2)
 	WalkParticles.emitting = true
 	Animations.play("Moving")
 

@@ -24,22 +24,10 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
+tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.96666664, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -61,18 +49,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.17627825445142767, 0.0, -0.17627825445142767]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.03333333),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_ude3g"]
@@ -99,7 +75,9 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" unique_id=1763163025 node_paths=PackedStringArray("Sprite") groups=["Player"]]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 11
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_ft8w5")
 Sprite = NodePath("Sprite2D")
 
@@ -118,7 +96,7 @@ texture = ExtResource("1_s0eop")
 position = Vector2(0, 13)
 shape = SubResource("CapsuleShape2D_mng68")
 
-[node name="Node" type="Node" parent="." unique_id=969523827 node_paths=PackedStringArray("Player", "Animations", "WalkParticles", "variable", "BoostScript")]
+[node name="StateMachine" type="Node" parent="." unique_id=969523827 node_paths=PackedStringArray("Player", "Animations", "WalkParticles", "variable", "BoostScript")]
 script = ExtResource("3_h54ih")
 Player = NodePath("..")
 Animations = NodePath("../AnimationPlayer")
@@ -137,7 +115,8 @@ dash_Multiplier = 3.0
 [node name="BoostScript" type="Node" parent="." unique_id=360350717]
 script = ExtResource("5_jmcll")
 
-[node name="PlayerUI" parent="." unique_id=1754467272 node_paths=PackedStringArray("BoostScript") instance=ExtResource("6_4wape")]
+[node name="PlayerUI" parent="." unique_id=1754467272 node_paths=PackedStringArray("BoostScript", "Player") instance=ExtResource("6_4wape")]
 BoostScript = NodePath("../BoostScript")
+Player = NodePath("..")
 
-[connection signal="dash" from="." to="Node" method="_on_player_dash"]
+[connection signal="dash" from="." to="StateMachine" method="_on_player_dash"]

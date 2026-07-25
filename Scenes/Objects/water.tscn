@@ -1,6 +1,12 @@
+<<<<<<< Updated upstream
 [gd_scene format=3 uid="uid://bn8mk5sxf7n0s"]
 
 [ext_resource type="Script" path="res://Scenes/Objects/water.gd" id="1_c5jd4"]
+=======
+[gd_scene format=3 uid="uid://duv24aanblsef"]
+
+[ext_resource type="Script" uid="uid://cbtm0wnjv4yxk" path="res://Scenes/Objects/water.gd" id="1_c5jd4"]
+>>>>>>> Stashed changes
 [ext_resource type="Texture2D" uid="uid://cu11a2anfgptm" path="res://Sprites/UI o Objetos/Water.png" id="1_po638"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_82v0y"]

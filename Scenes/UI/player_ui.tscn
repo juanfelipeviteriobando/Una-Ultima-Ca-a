@@ -6,10 +6,19 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_uhyxi"]
 font = ExtResource("2_t3flm")
+font_size = 10
 
-[node name="PlayerUI" type="CanvasLayer" unique_id=1754467272 node_paths=PackedStringArray("BoostBar")]
+[sub_resource type="LabelSettings" id="LabelSettings_82v0y"]
+font = ExtResource("2_t3flm")
+font_size = 10
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t3flm"]
+load_path = "res://.godot/imported/BoostBar.png-ae217e120cc13f7f060959023319ebef.ctex"
+
+[node name="PlayerUI" type="CanvasLayer" unique_id=1754467272 node_paths=PackedStringArray("BoostBar", "WaterBar")]
 script = ExtResource("1_t3flm")
-BoostBar = NodePath("Control/BoostBar")
+BoostBar = NodePath("Control/VBoxContainer/BarBoost/BoostBar")
+WaterBar = NodePath("Control/VBoxContainer/WaterBar/TextureProgressBar")
 
 [node name="Control" type="Control" parent="." unique_id=2027756909]
 layout_mode = 3
@@ -19,23 +28,47 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BoostBar" type="TextureProgressBar" parent="Control" unique_id=763068113]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=1963070655]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.146875
-anchor_top = 0.06388889
-anchor_right = 0.771875
-anchor_bottom = 0.175
-value = 100.0
-nine_patch_stretch = true
-stretch_margin_right = 200
-texture_progress = ExtResource("1_7jiju")
+anchor_left = 0.0171875
+anchor_top = 0.041666668
+anchor_right = 0.5640625
+anchor_bottom = 0.21388888
+theme_override_constants/separation = -1
 metadata/_edit_use_anchors_ = true
 
-[node name="BoostBarText" type="Label" parent="Control" unique_id=121198592]
-layout_mode = 0
-offset_top = 34.0
-offset_right = 96.0
-offset_bottom = 57.0
-text = "Boost:"
+[node name="BarBoost" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=448770492]
+layout_mode = 2
+
+[node name="BoostBarText" type="Label" parent="Control/VBoxContainer/BarBoost" unique_id=121198592]
+layout_mode = 2
+text = "Darle Caña:"
 label_settings = SubResource("LabelSettings_uhyxi")
+
+[node name="BoostBar" type="TextureProgressBar" parent="Control/VBoxContainer/BarBoost" unique_id=763068113]
+layout_mode = 2
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_top = 20
+stretch_margin_right = 200
+stretch_margin_bottom = 10
+texture_progress = ExtResource("1_7jiju")
+
+[node name="WaterBar" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=1154523383]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/WaterBar" unique_id=647360541]
+layout_mode = 2
+text = "Agua:"
+label_settings = SubResource("LabelSettings_82v0y")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Control/VBoxContainer/WaterBar" unique_id=1015401440]
+layout_mode = 2
+max_value = 150.0
+value = 150.0
+nine_patch_stretch = true
+stretch_margin_left = 118
+stretch_margin_top = 17
+stretch_margin_bottom = 15
+texture_progress = SubResource("CompressedTexture2D_t3flm")
