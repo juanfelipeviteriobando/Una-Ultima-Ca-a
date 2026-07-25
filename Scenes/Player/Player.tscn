@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://n8511amd7jpj" path="res://Sprites/Player/Caña Azucar.png" id="1_s0eop"]
 [ext_resource type="Script" uid="uid://vcxhxufa0ogy" path="res://Scenes/Player/StateMachine.gd" id="3_h54ih"]
 [ext_resource type="Script" uid="uid://dadi6s0alhsrf" path="res://Scenes/Player/variables.gd" id="4_ude3g"]
+[ext_resource type="Script" uid="uid://d1y225knb54uv" path="res://Scenes/Player/boost_script.gd" id="5_jmcll"]
+[ext_resource type="PackedScene" uid="uid://cxef34df4k8em" path="res://Scenes/UI/player_ui.tscn" id="6_4wape"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_82v0y"]
 particle_flag_disable_z = true
@@ -116,12 +118,13 @@ texture = ExtResource("1_s0eop")
 position = Vector2(0, 13)
 shape = SubResource("CapsuleShape2D_mng68")
 
-[node name="Node" type="Node" parent="." unique_id=969523827 node_paths=PackedStringArray("Player", "Animations", "WalkParticles", "variable")]
+[node name="Node" type="Node" parent="." unique_id=969523827 node_paths=PackedStringArray("Player", "Animations", "WalkParticles", "variable", "BoostScript")]
 script = ExtResource("3_h54ih")
 Player = NodePath("..")
 Animations = NodePath("../AnimationPlayer")
 WalkParticles = NodePath("../GPUParticles2D")
 variable = NodePath("../Variables")
+BoostScript = NodePath("../BoostScript")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1778744295]
 libraries/ = SubResource("AnimationLibrary_jmcll")
@@ -130,5 +133,11 @@ libraries/ = SubResource("AnimationLibrary_jmcll")
 script = ExtResource("4_ude3g")
 dash_duration = 0.05
 dash_Multiplier = 3.0
+
+[node name="BoostScript" type="Node" parent="." unique_id=360350717]
+script = ExtResource("5_jmcll")
+
+[node name="PlayerUI" parent="." unique_id=1754467272 node_paths=PackedStringArray("BoostScript") instance=ExtResource("6_4wape")]
+BoostScript = NodePath("../BoostScript")
 
 [connection signal="dash" from="." to="Node" method="_on_player_dash"]
