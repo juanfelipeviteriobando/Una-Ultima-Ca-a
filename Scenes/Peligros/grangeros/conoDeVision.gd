@@ -39,16 +39,24 @@ func _on_area_2d_2_body_exited(body: Node2D) -> void:
 		objetivo = null
 		player_lost.emit(body)
 
+var puede_sospechar := true
+@export var tiempo_sospecha := 3.0
+var ya_detectado := false
 
 func _process(delta):
 	# sospecha que se mueve
-	if objetivo:
-		if objetivo.velocity.length() > 5:
-			look_at(objetivo.global_position)
-			player_suspicious.emit(objetivo)
+	if objetivo.velocity.length() > 5 and puede_sospechar:
+		puede_sospechar = false
+		
+		look_at(objetivo.global_position)
+		player_suspicious.emit(objetivo)
+		
+		await get_tree().create_timer(tiempo_sospecha).timeout
+		puede_sospechar = true
 
 
 	# confirma que se movio
-	if objetivoDefinitivo and puede_detectar:
+	if objetivoDefinitivo and puede_detectar and not ya_detectado:
 		if objetivoDefinitivo.velocity.length() > 5:
+			ya_detectado = true
 			player_detected.emit(objetivoDefinitivo)

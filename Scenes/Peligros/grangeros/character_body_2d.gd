@@ -7,6 +7,9 @@ var SPEED = 80.0
 @export var NormalSpeed:float = 80.0
 @export var Max_Speed = 120.0
 
+var nivel_sospecha:int = 0
+var posicion_investigar:Vector2
+
 var current_Index:int=0
 var wait: bool = false
 var player
@@ -98,11 +101,36 @@ func _on_timer_2_timeout() -> void:
 func _on_area_2d_2_body_exited(body: Node2D) -> void:
 	await get_tree().create_timer(1).timeout
 	persigueJugador=false
+	nivel_sospecha=0
 
 
 func _on_vision_player_suspicious(player: Variant) -> void:
 	if persigueJugador:
 		return
-	wait=true
-	await get_tree().create_timer(5).timeout
-	wait=false
+
+	nivel_sospecha += 1
+
+	match nivel_sospecha:
+		
+		# Primera vez que lo ve
+		1:
+			wait = true
+			
+			await get_tree().create_timer(5).timeout
+			wait = false
+
+
+		# Segunda vez: investigar cerca del jugador
+		2:
+			wait = false
+			
+			posicion_investigar = player.global_position + Vector2(40, 40)
+			agent.target_position = posicion_investigar
+			
+			await get_tree().create_timer(5).timeout
+
+
+		# Tercera vez: persecución
+		3:
+			persigueJugador = true
+			wait = false
