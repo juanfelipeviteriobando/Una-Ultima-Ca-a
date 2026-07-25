@@ -62,11 +62,7 @@ func estado_Moving(delta: float) -> void:
 func estado_Dash(delta: float) -> void:
 	MoveCaracteristics()
 	Player.velocity = Dash_Direction* Player.Speed*variable.dash_Multiplier
-	print("Input:", Player.Input_Dir)
-	print("Objetivo:", Player.Input_Dir * Player.Speed * variable.dash_Multiplier)
-	print("speed:",  Player.Speed)
-	print("dash_mulriplier:",variable.dash_Multiplier)
-	print("Velocidad:", Player.velocity)
+
 
 func MoveCaracteristics():
 	scale_tween = create_tween()

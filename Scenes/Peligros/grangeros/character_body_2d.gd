@@ -15,7 +15,7 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	
-	if wait == true:
+	if wait == true&&persigueJugador==false:
 		return
 	var objetivo_rotation: float
 
@@ -65,12 +65,44 @@ func _on_timer_timeout() -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	persigueJugador=true # Replace with function body.
+	if body.is_in_group("Player"):
 
+		var shape = body.get_node("CollisionShape2D")
+		var objetivo = shape.global_position
+
+		var query = PhysicsRayQueryParameters2D.create(
+			global_position,
+			objetivo
+		)
+
+		query.exclude = [
+			get_rid(),
+			$vision/Area2D.get_rid(),
+			$vision/Area2D2.get_rid()
+		]
+
+		query.collision_mask = 1|4
+		query.collide_with_bodies = true
+		query.collide_with_areas = false
+
+		var result = get_world_2d().direct_space_state.intersect_ray(query)
+
+		if not result.is_empty():
+			if result["collider"] == body:
+				persigueJugador = true
 
 func _on_timer_2_timeout() -> void:
 	wait = false
 
 
 func _on_area_2d_2_body_exited(body: Node2D) -> void:
+	await get_tree().create_timer(1).timeout
 	persigueJugador=false
+
+
+func _on_vision_player_suspicious(player: Variant) -> void:
+	if persigueJugador:
+		return
+	wait=true
+	await get_tree().create_timer(5).timeout
+	wait=false
