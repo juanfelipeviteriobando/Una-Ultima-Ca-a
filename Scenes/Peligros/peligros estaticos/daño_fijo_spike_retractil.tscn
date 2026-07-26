@@ -8,6 +8,8 @@ radius = 10.049875
 
 [node name="daño fijo spike retractil" type="Node2D" unique_id=1902753410]
 script = ExtResource("1_gj7fc")
+"pequeño" = Vector2(0.5, 0.5)
+grande = Vector2(3, 3)
 
 [node name="Timer" type="Timer" parent="." unique_id=154555611]
 

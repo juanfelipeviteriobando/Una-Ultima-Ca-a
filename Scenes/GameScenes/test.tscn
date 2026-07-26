@@ -80,9 +80,11 @@ position = Vector2(226, 514)
 
 [node name="daño fijo spike retractil" parent="." unique_id=1902753410 instance=ExtResource("8_m3en6")]
 position = Vector2(445, 551)
+grande = Vector2(5, 5)
 
 [node name="daño rotativo" parent="." unique_id=131482303 instance=ExtResource("9_r3ac6")]
 position = Vector2(600, 530)
 
-[node name="CharacterBody2D" parent="." unique_id=1858532645 instance=ExtResource("9_m3en6")]
+[node name="CharacterBody2D" parent="." unique_id=1858532645 node_paths=PackedStringArray("waypoints") instance=ExtResource("9_m3en6")]
 position = Vector2(-92, 297)
+waypoints = [NodePath("../Waypoint/Marker2D"), NodePath("../Waypoint/Marker2D2"), NodePath("../Waypoint/Marker2D5"), NodePath("../Waypoint/Marker2D7")]

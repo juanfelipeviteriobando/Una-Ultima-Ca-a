@@ -7,6 +7,12 @@ var SPEED = 80.0
 @export var NormalSpeed:float = 80.0
 @export var Max_Speed = 120.0
 
+@export_category("Vision")
+@export var angulo_busqueda := 50.0 # grados a cada lado
+@export var velocidad_busqueda := 2.0
+
+var tiempo_busqueda := 0.0
+
 var nivel_sospecha:int = 0
 var posicion_investigar:Vector2
 
@@ -21,16 +27,24 @@ func _physics_process(delta: float) -> void:
 	if wait == true&&persigueJugador==false:
 		return
 	var objetivo_rotation: float
-
-	if persigueJugador == false:
-		objetivo_rotation = ($vision.global_position.direction_to(agent.target_position)).angle()
-	else:
+	var direccion:float
+	if persigueJugador:
+		# Mira directamente al jugador
 		objetivo_rotation = ($vision.global_position.direction_to(player.global_position)).angle()
+	else:
+		# Dirección hacia donde camina
+		direccion = (agent.get_next_path_position() - global_position).angle()
+
+	# Movimiento de búsqueda izquierda-derecha
+	tiempo_busqueda += delta
+	var offset = deg_to_rad(angulo_busqueda) * sin(tiempo_busqueda * velocidad_busqueda)
+	if !persigueJugador:
+		objetivo_rotation = direccion + offset
 
 	$vision.rotation = lerp_angle(
 		$vision.rotation,
 		objetivo_rotation,
-		5.0 * delta
+		6.0 * delta
 	)
 
 	if agent.is_navigation_finished():

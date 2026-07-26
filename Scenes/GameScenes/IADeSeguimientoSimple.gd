@@ -12,7 +12,7 @@ func _physics_process(delta):
 
 	var objetivo = waypoints[indice_actual].global_position
 	var direccion = global_position.direction_to(objetivo)
-
+	look_at(objetivo)
 	velocity = direccion * velocidad
 	move_and_slide()
 
