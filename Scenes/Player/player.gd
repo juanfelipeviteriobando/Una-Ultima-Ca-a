@@ -12,6 +12,7 @@ var MaxWater: float = 50.0
 var ActualWater: float
 var WaterAmount = false
 var scaleamount: int = 0
+var incremental: float=50.0
 
 var MaxEnhance: bool = false
 
@@ -39,8 +40,8 @@ func _physics_process(delta: float) -> void:
 	if ActualWater >= MaxWater:
 		WaterAmount = false
 		ActualWater = 0.0
-		MaxWater += 50.0
-		BoostScript.MaxBoost += 50.0
+		MaxWater += incremental
+		BoostScript.MaxBoost += incremental
 		WaterChange.emit(ActualWater)
 		var tweenscale = create_tween()
 		if scaleamount == 1:

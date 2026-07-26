@@ -115,6 +115,7 @@ dash_Multiplier = 3.0
 
 [node name="BoostScript" type="Node" parent="." unique_id=360350717]
 script = ExtResource("5_jmcll")
+ActualBoost = 100.0
 
 [node name="PlayerUI" parent="." unique_id=1754467272 node_paths=PackedStringArray("BoostScript", "Player") instance=ExtResource("6_4wape")]
 BoostScript = NodePath("../BoostScript")

@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cdc6srswm4qay" path="res://Scenes/Peligros/grangeros/granjero.tscn" id="6_gop8n"]
 [ext_resource type="PackedScene" uid="uid://bn8mk5sxf7n0s" path="res://Scenes/Objects/water.tscn" id="7_e4wcu"]
 [ext_resource type="PackedScene" uid="uid://c0ket5o1e6h5y" path="res://Scenes/Peligros/peligros estaticos/daño_fijo_spike_retractil.tscn" id="8_m3en6"]
+[ext_resource type="PackedScene" uid="uid://bdid5gxd7dxh1" path="res://Scenes/Peligros/peligros estaticos/podadora.tscn" id="9_m3en6"]
 [ext_resource type="PackedScene" uid="uid://c87bo8xslngoa" path="res://Scenes/Peligros/peligros estaticos/daño_rotativo.tscn" id="9_r3ac6"]
 
 [sub_resource type="Resource" id="Resource_gop8n"]
@@ -20,7 +21,7 @@ tile_map_data = PackedByteArray("AAD3/woAAAADAAMAAAD3/wsAAAADAAMAAAD3/wwAAAADAAM
 tile_set = ExtResource("1_gop8n")
 
 [node name="Player" parent="." unique_id=1763163025 instance=ExtResource("1_53y48")]
-position = Vector2(145, 389)
+position = Vector2(143, 390)
 
 [node name="Granjero" parent="." unique_id=2116185681 node_paths=PackedStringArray("waypoints") instance=ExtResource("6_gop8n")]
 position = Vector2(504, 290)
@@ -52,7 +53,7 @@ position = Vector2(-64, 221)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=718256891]
 physics_interpolation_mode = 1
 top_level = true
-position = Vector2(145, 389)
+position = Vector2(143, 390)
 zoom = Vector2(2, 2)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=1111487616]
@@ -63,7 +64,7 @@ metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=2050407689 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(145, 389)
+position = Vector2(143, 390)
 script = ExtResource("4_e4wcu")
 priority = 5
 follow_mode = 2
@@ -82,3 +83,6 @@ position = Vector2(445, 551)
 
 [node name="daño rotativo" parent="." unique_id=131482303 instance=ExtResource("9_r3ac6")]
 position = Vector2(600, 530)
+
+[node name="CharacterBody2D" parent="." unique_id=1858532645 instance=ExtResource("9_m3en6")]
+position = Vector2(-92, 297)
