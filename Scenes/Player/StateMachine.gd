@@ -28,6 +28,9 @@ enum STATE {
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Granjero = get_tree().get_first_node_in_group("Enemigo")
+	$"../Area2D/CollisionShape2D".disabled=true
+
+
 func _on_player_dash() -> void:
 	if not variable.can_dash:
 		return
@@ -37,8 +40,17 @@ func _on_player_dash() -> void:
 	Current_State = STATE.Dash
 	
 	Dash_Direction = Player.Input_Dir.normalized()
+	$"../Area2D/CollisionShape2D".disabled=false
+	$"..".set_collision_layer_value(1, false)
 	await get_tree().create_timer(variable.dash_duration).timeout
+	_end_dash()
+
+func _end_dash():
+	$"../Area2D/CollisionShape2D".disabled = true
+	$"..".set_collision_layer_value(1, true)
+
 	Dashcooldown()
+	
 func Dashcooldown():
 	Current_State = STATE.IDLE
 	await get_tree().create_timer(variable.dash_cooldown).timeout

@@ -10,9 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://c0ket5o1e6h5y" path="res://Scenes/Peligros/peligros estaticos/daño_fijo_spike_retractil.tscn" id="8_m3en6"]
 [ext_resource type="PackedScene" uid="uid://bdid5gxd7dxh1" path="res://Scenes/Peligros/peligros estaticos/podadora.tscn" id="9_m3en6"]
 [ext_resource type="PackedScene" uid="uid://c87bo8xslngoa" path="res://Scenes/Peligros/peligros estaticos/daño_rotativo.tscn" id="9_r3ac6"]
+[ext_resource type="Script" uid="uid://ynh6fl3f43u8" path="res://Scenes/GameScenes/checkpoint.gd" id="12_acepk"]
 
 [sub_resource type="Resource" id="Resource_gop8n"]
 script = ExtResource("5_bxen2")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mng68"]
+radius = 50.0
 
 [node name="Node2D" type="Node2D" unique_id=838280850]
 
@@ -88,3 +92,15 @@ position = Vector2(600, 530)
 [node name="CharacterBody2D" parent="." unique_id=1858532645 node_paths=PackedStringArray("waypoints") instance=ExtResource("9_m3en6")]
 position = Vector2(-92, 297)
 waypoints = [NodePath("../Waypoint/Marker2D"), NodePath("../Waypoint/Marker2D2"), NodePath("../Waypoint/Marker2D5"), NodePath("../Waypoint/Marker2D7")]
+
+[node name="checkpoint" type="Node2D" parent="." unique_id=1355744328]
+position = Vector2(133, 310)
+script = ExtResource("12_acepk")
+
+[node name="Area2D" type="Area2D" parent="checkpoint" unique_id=915526063]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="checkpoint/Area2D" unique_id=1667151240]
+shape = SubResource("CircleShape2D_mng68")
+
+[connection signal="body_entered" from="checkpoint/Area2D" to="checkpoint" method="_on_area_2d_body_entered"]

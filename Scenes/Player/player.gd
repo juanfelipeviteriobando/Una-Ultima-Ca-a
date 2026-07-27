@@ -27,22 +27,25 @@ signal WaterChange(Water)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	ActualWater = minWater
+
+	if GameManager.has_checkpoint():
+		$Variables/PlayerSaveComponent.load_player(self)
+
 	WaterChange.emit(ActualWater)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	CurrentScale = Vector2(scale.x, scale.y)
 	if MaxEnhance == true:
 		WaterAmount = false
-	if WaterAmount == true:
-		ActualWater += 0.1
-		WaterChange.emit(ActualWater)
 	if ActualWater >= MaxWater:
 		WaterAmount = false
 		ActualWater = 0.0
 		MaxWater += incremental
 		BoostScript.MaxBoost += incremental
 		WaterChange.emit(ActualWater)
+		scaleamount+=1
 		var tweenscale = create_tween()
 		if scaleamount == 1:
 			tweenscale.tween_property(self, "scale", Vector2(1.0, 1.5), 0.5)
@@ -57,3 +60,6 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Dash"):
 		dash.emit()
 	move_and_slide()
+
+func morir():
+	get_tree().reload_current_scene()

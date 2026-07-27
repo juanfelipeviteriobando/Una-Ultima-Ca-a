@@ -17,7 +17,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	# Le damos tiempo al jugador para reaccionar
 	puede_detectar = false
 	
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(0.5).timeout
 	
 	if objetivoDefinitivo == body:
 		puede_detectar = true

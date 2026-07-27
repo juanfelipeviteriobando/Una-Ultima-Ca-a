@@ -1,14 +1,33 @@
 extends Area2D
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
 
+@export var reserva_agua := 100.0
+@export var velocidad_llenado := 10.0
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+var jugador: CharacterBody2D = null
 
+func _process(delta):
+	if jugador == null:
+		return
 
-func _on_body_entered(body: Node2D) -> void:
-	body.WaterAmount = true
-	body.scaleamount += 1
+	if reserva_agua <= 0:
+		hide()
+		$CollisionShape2D.disabled = true
+		return
+
+	var cantidad = velocidad_llenado * delta
+
+	# No entregar más agua de la que queda.
+	cantidad = min(cantidad, reserva_agua)
+
+	jugador.ActualWater += cantidad
+	jugador.WaterChange.emit(jugador.ActualWater)
+
+	reserva_agua -= cantidad
+
+func _on_body_entered(body):
+	if body.is_in_group("Player"):
+		jugador = body
+
+func _on_body_exited(body):
+	if body == jugador:
+		jugador = null

@@ -10,9 +10,10 @@ var SPEED = 80.0
 @export_category("Vision")
 @export var angulo_busqueda := 50.0 # grados a cada lado
 @export var velocidad_busqueda := 2.0
-
+@export_category("noqueado")
+@export var tiempo_Noqueaut:float =6
 var tiempo_busqueda := 0.0
-
+var tiempo_espera:=5
 var nivel_sospecha:int = 0
 var posicion_investigar:Vector2
 
@@ -23,7 +24,8 @@ func _ready():
 	player=get_tree().get_first_node_in_group("Player")
 
 func _physics_process(delta: float) -> void:
-	
+	if estado_actual==EstadoIA.NOQUEADO:
+		return
 	if wait == true&&persigueJugador==false:
 		return
 	var objetivo_rotation: float
@@ -68,6 +70,7 @@ func _physics_process(delta: float) -> void:
 		SPEED = NormalSpeed
 	velocity=direction.normalized()*SPEED
 	move_and_slide()
+	
 
 
 
@@ -122,7 +125,8 @@ enum EstadoIA {
 	PATRULLANDO,
 	SOSPECHANDO,
 	INVESTIGANDO,
-	PERSIGUIENDO
+	PERSIGUIENDO,
+	NOQUEADO
 }
 
 var estado_actual = EstadoIA.PATRULLANDO
@@ -145,7 +149,7 @@ func _on_vision_player_suspicious(player: Variant) -> void:
 		1:
 			wait = true
 			cambiar_estado(EstadoIA.SOSPECHANDO)
-			await get_tree().create_timer(5).timeout
+			await get_tree().create_timer(tiempo_espera).timeout
 			wait = false
 
 
@@ -156,7 +160,7 @@ func _on_vision_player_suspicious(player: Variant) -> void:
 			posicion_investigar = player.global_position + Vector2(40, 40)
 			agent.target_position = posicion_investigar
 			
-			await get_tree().create_timer(5).timeout
+			await get_tree().create_timer(tiempo_espera).timeout
 
 
 		# Tercera vez: persecución
@@ -164,3 +168,14 @@ func _on_vision_player_suspicious(player: Variant) -> void:
 			EstadoIA.PERSIGUIENDO
 			persigueJugador = true
 			wait = false
+
+func Noquear():
+	cambiar_estado(EstadoIA.NOQUEADO)
+	await get_tree().create_timer(tiempo_Noqueaut).timeout
+	cambiar_estado(EstadoIA.PATRULLANDO)
+
+func matar(body: Node2D) -> void:
+	if body.is_in_group("Player") and is_inside_tree():
+		var boost = body.get_node("BoostScript")
+		if boost.ActualBoost <= boost.MinBoost:
+			body.morir()

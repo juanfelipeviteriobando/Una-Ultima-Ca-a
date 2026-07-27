@@ -6,8 +6,11 @@
 [ext_resource type="Script" uid="uid://c5l1df1kduo53" path="res://Scenes/Peligros/grangeros/panelgranjero.gd" id="4_yohfg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mng68"]
-radius = 6.0
-height = 12.0
+radius = 3.0
+height = 10.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mng68"]
+radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_00lfu"]
 radius = 199.16074
@@ -28,6 +31,13 @@ texture = ExtResource("2_r5noh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2009642620]
 position = Vector2(0, 6)
 shape = SubResource("CapsuleShape2D_mng68")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1357733650]
+position = Vector2(0, 7)
+collision_mask = 4
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1964342680]
+shape = SubResource("CircleShape2D_mng68")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1561817108]
 debug_enabled = true
@@ -84,6 +94,7 @@ layout_mode = 2
 layout_mode = 2
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="matar"]
 [connection signal="player_detected" from="vision" to="." method="_on_area_2d_body_entered"]
 [connection signal="player_lost" from="vision" to="." method="_on_area_2d_2_body_exited"]
 [connection signal="player_suspicious" from="vision" to="." method="_on_vision_player_suspicious"]

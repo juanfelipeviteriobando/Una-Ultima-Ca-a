@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://vcxhxufa0ogy" path="res://Scenes/Player/StateMachine.gd" id="3_h54ih"]
 [ext_resource type="Script" uid="uid://dadi6s0alhsrf" path="res://Scenes/Player/variables.gd" id="4_ude3g"]
 [ext_resource type="Script" uid="uid://d1y225knb54uv" path="res://Scenes/Player/boost_script.gd" id="5_jmcll"]
+[ext_resource type="Script" uid="uid://dspqs71135wh0" path="res://Scenes/Player/PlayerSaveComponent.gd" id="5_t26db"]
 [ext_resource type="PackedScene" uid="uid://cxef34df4k8em" path="res://Scenes/UI/player_ui.tscn" id="6_4wape"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_82v0y"]
@@ -73,6 +74,9 @@ _data = {
 &"RESET": SubResource("Animation_ude3g")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_mng68"]
+radius = 21.023796
+
 [node name="Player" type="CharacterBody2D" unique_id=1763163025 node_paths=PackedStringArray("Sprite", "BoostScript") groups=["Player"]]
 collision_layer = 4
 collision_mask = 11
@@ -113,6 +117,9 @@ script = ExtResource("4_ude3g")
 dash_duration = 0.05
 dash_Multiplier = 3.0
 
+[node name="PlayerSaveComponent" type="Node" parent="Variables" unique_id=855904297]
+script = ExtResource("5_t26db")
+
 [node name="BoostScript" type="Node" parent="." unique_id=360350717]
 script = ExtResource("5_jmcll")
 ActualBoost = 100.0
@@ -121,4 +128,11 @@ ActualBoost = 100.0
 BoostScript = NodePath("../BoostScript")
 Player = NodePath("..")
 
+[node name="Area2D" type="Area2D" parent="." unique_id=1715739668]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1093382890]
+position = Vector2(0, 14)
+shape = SubResource("CircleShape2D_mng68")
+
 [connection signal="dash" from="." to="StateMachine" method="_on_player_dash"]
+[connection signal="body_entered" from="Area2D" to="BoostScript" method="_on_area_2d_body_entered"]
