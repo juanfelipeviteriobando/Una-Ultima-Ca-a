@@ -10,10 +10,12 @@ var SPEED = 80.0
 @export_category("Vision")
 @export var angulo_busqueda := 50.0 # grados a cada lado
 @export var velocidad_busqueda := 2.0
-@export_category("noqueado")
+@export var distanciadeataque := 1
+@export_category("tiempos")
 @export var tiempo_Noqueaut:float =6
+@export var tiempo_espera:=1
 var tiempo_busqueda := 0.0
-var tiempo_espera:=5
+
 var nivel_sospecha:int = 0
 var posicion_investigar:Vector2
 
@@ -22,6 +24,7 @@ var wait: bool = false
 var player
 func _ready():
 	player=get_tree().get_first_node_in_group("Player")
+	$Node2D/Area2D/CollisionShape2D.disabled=true
 
 func _physics_process(delta: float) -> void:
 	if estado_actual==EstadoIA.NOQUEADO:
@@ -64,11 +67,17 @@ func _physics_process(delta: float) -> void:
 		
 	
 	var direction=agent.get_next_path_position()-global_position
+
 	if persigueJugador == true:
 		SPEED = Max_Speed
 	else:
 		SPEED = NormalSpeed
-	velocity=direction.normalized()*SPEED
+	var distanciaaljugador = global_position.distance_to(player.global_position)
+	var limite:bool=true
+	if distanciaaljugador<=distanciadeataque:
+		limite=false
+		matar(player)
+	velocity=direction.normalized()*SPEED*int(limite)
 	move_and_slide()
 	
 
@@ -86,7 +95,7 @@ func _on_timer_timeout() -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
+	if body!=null and body.is_in_group("Player"):
 
 		var shape = body.get_node("CollisionShape2D")
 		var objetivo = shape.global_position
@@ -111,6 +120,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		if not result.is_empty():
 			if result["collider"] == body:
 				persigueJugador = true
+				estado_actual=EstadoIA.PERSIGUIENDO
 
 func _on_timer_2_timeout() -> void:
 	wait = false
@@ -179,3 +189,36 @@ func matar(body: Node2D) -> void:
 		var boost = body.get_node("BoostScript")
 		if boost.ActualBoost <= boost.MinBoost:
 			body.morir()
+
+
+func ataque() -> void:
+	if estado_actual != EstadoIA.PERSIGUIENDO:
+		$Node2D.hide()
+		return
+
+	$Node2D.look_at(player.global_position)
+	$Node2D.show()
+
+	var shape_node = $Node2D/Area2D/CollisionShape2D
+
+	var query = PhysicsShapeQueryParameters2D.new()
+	query.shape = shape_node.shape
+	query.transform = shape_node.global_transform
+
+	# Opcional: excluir al propio granjero
+	query.exclude = [self]
+
+	# Usa la máscara del CollisionShape/Area si quieres respetar capas
+	query.collision_mask = $Node2D/Area2D.collision_mask
+
+	var resultados = get_world_2d().direct_space_state.intersect_shape(query)
+
+	for resultado in resultados:
+		var cuerpo = resultado.collider
+		
+		if cuerpo.is_in_group("Player"):
+			$Node2D/Area2D.Dañar(cuerpo)
+
+	await get_tree().create_timer(0.1).timeout
+	
+	$Node2D.hide()
