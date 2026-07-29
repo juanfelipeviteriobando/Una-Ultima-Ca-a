@@ -48,10 +48,11 @@ label_settings = SubResource("LabelSettings_uhyxi")
 
 [node name="BoostBar" type="TextureProgressBar" parent="Control/VBoxContainer/BarBoost" unique_id=763068113]
 layout_mode = 2
+max_value = 300.0
 value = 100.0
 nine_patch_stretch = true
 stretch_margin_top = 20
-stretch_margin_right = 200
+stretch_margin_right = 150
 stretch_margin_bottom = 10
 texture_progress = ExtResource("1_7jiju")
 
@@ -67,7 +68,6 @@ label_settings = SubResource("LabelSettings_82v0y")
 layout_mode = 2
 max_value = 150.0
 value = 150.0
-nine_patch_stretch = true
 stretch_margin_left = 118
 stretch_margin_top = 17
 stretch_margin_bottom = 15
