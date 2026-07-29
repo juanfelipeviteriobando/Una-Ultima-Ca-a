@@ -140,7 +140,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		if not result.is_empty():
 			if result["collider"] == body:
 				persigueJugador = true
-				estado_actual=EstadoIA.PERSIGUIENDO
+				cambiar_estado(EstadoIA.PERSIGUIENDO)
 
 func _on_timer_2_timeout() -> void:
 	wait = false
