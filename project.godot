@@ -67,6 +67,7 @@ Dash={
 2d_navigation/layer_1="Navegable"
 2d_physics/layer_2="Enemigo"
 2d_physics/layer_3="Jugador"
+2d_physics/layer_5="escondite"
 
 [physics]
 

@@ -18,7 +18,8 @@ func _process(delta):
 
 	# No entregar más agua de la que queda.
 	cantidad = min(cantidad, reserva_agua)
-
+	if jugador==null:
+		return
 	jugador.ActualWater += cantidad
 	jugador.WaterChange.emit(jugador.ActualWater)
 

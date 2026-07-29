@@ -14,6 +14,9 @@ var SPEED = 80.0
 @export_category("tiempos")
 @export var tiempo_Noqueaut:float =6
 @export var tiempo_espera:=1
+#@export_category("limites de estado")
+@export var tiempo_max_estado: float = 10
+
 var tiempo_busqueda := 0.0
 
 var nivel_sospecha:int = 0
@@ -29,8 +32,25 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	if estado_actual==EstadoIA.NOQUEADO:
 		return
+	
 	if wait == true&&persigueJugador==false:
 		return
+	
+		# Control de tiempo de estados temporales
+	if estado_actual != EstadoIA.PERSIGUIENDO \
+	and estado_actual != EstadoIA.PATRULLANDO \
+	and estado_actual != EstadoIA.NOQUEADO:
+
+		tiempo_estado += delta
+
+		if tiempo_estado >= tiempo_max_estado:
+			cambiar_estado(EstadoIA.PATRULLANDO)
+			persigueJugador = false
+			wait = false
+			nivel_sospecha = 0
+			agent.target_position = waypoints[current_Index].global_position
+
+	
 	var objetivo_rotation: float
 	var direccion:float
 	if persigueJugador:
@@ -141,10 +161,10 @@ enum EstadoIA {
 
 var estado_actual = EstadoIA.PATRULLANDO
 var tiempo_estado := 0.0
-func cambiar_estado(nuevo_estado):
+func cambiar_estado(nuevo_estado: EstadoIA):
 	if estado_actual != nuevo_estado:
 		estado_actual = nuevo_estado
-		tiempo_estado = 0
+		tiempo_estado = 0.0
 
 func _on_vision_player_suspicious(player: Variant) -> void:
 	if persigueJugador:
@@ -175,7 +195,7 @@ func _on_vision_player_suspicious(player: Variant) -> void:
 
 		# Tercera vez: persecución
 		3:
-			EstadoIA.PERSIGUIENDO
+			cambiar_estado(EstadoIA.PERSIGUIENDO)
 			persigueJugador = true
 			wait = false
 

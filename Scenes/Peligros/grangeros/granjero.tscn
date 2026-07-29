@@ -13,11 +13,11 @@ height = 20.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_mng68"]
 radius = 40.012497
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_00lfu"]
-radius = 199.16074
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_a02i8"]
 radius = 61.130997
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_00lfu"]
+radius = 152.3975
 
 [node name="Granjero" type="CharacterBody2D" unique_id=2116185681 node_paths=PackedStringArray("agent") groups=["Enemigo"]]
 motion_mode = 1
@@ -52,17 +52,21 @@ script = ExtResource("3_r5noh")
 
 [node name="Area2D" type="Area2D" parent="vision" unique_id=467513058]
 collision_layer = 2
-collision_mask = 4
+collision_mask = 20
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="vision/Area2D" unique_id=113884365]
-polygon = PackedVector2Array(0, 0, 70, 37, 99, 23, 103, -12, 74, -37)
+polygon = PackedVector2Array(0, 0, 101, 60, 133, 28, 132, -23, 100, -63)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="vision/Area2D" unique_id=569787103]
+scale = Vector2(1.0000001, 1.0000001)
+shape = SubResource("CircleShape2D_a02i8")
 
 [node name="Area2D2" type="Area2D" parent="vision" unique_id=1694490513]
 collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="vision/Area2D2" unique_id=883768555]
-polygon = PackedVector2Array(4, 1, 14, 16, 104, 107, 167, 72, 190, 2, 169, -68, 99, -94, 15, -13)
+polygon = PackedVector2Array(4, 1, 14, 16, 160, 103, 221, 78, 264, -3, 213, -78, 169, -92, 15, -13)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="vision/Area2D2" unique_id=1314011290]
 shape = SubResource("CircleShape2D_00lfu")

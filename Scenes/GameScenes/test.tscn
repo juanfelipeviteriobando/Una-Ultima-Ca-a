@@ -10,13 +10,20 @@
 [ext_resource type="PackedScene" uid="uid://c0ket5o1e6h5y" path="res://Scenes/Peligros/peligros estaticos/daño_fijo_spike_retractil.tscn" id="8_m3en6"]
 [ext_resource type="PackedScene" uid="uid://bdid5gxd7dxh1" path="res://Scenes/Peligros/peligros estaticos/podadora.tscn" id="9_m3en6"]
 [ext_resource type="PackedScene" uid="uid://c87bo8xslngoa" path="res://Scenes/Peligros/peligros estaticos/daño_rotativo.tscn" id="9_r3ac6"]
-[ext_resource type="Script" uid="uid://ynh6fl3f43u8" path="res://Scenes/GameScenes/checkpoint.gd" id="12_acepk"]
+[ext_resource type="PackedScene" uid="uid://dlvfvhohayj3x" path="res://Scenes/Player/checkpoint.tscn" id="11_6adnh"]
+[ext_resource type="Script" uid="uid://bv6kc3wcvek0x" path="res://Scenes/GameScenes/area_de_escondite.gd" id="12_acepk"]
+[ext_resource type="Script" uid="uid://cxbcji46jmiwd" path="res://Scenes/GameScenes/azucar.gd" id="13_q2lrq"]
+[ext_resource type="Texture2D" uid="uid://cu11a2anfgptm" path="res://Sprites/UI o Objetos/Water.png" id="14_qdu8n"]
 
 [sub_resource type="Resource" id="Resource_gop8n"]
 script = ExtResource("5_bxen2")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mng68"]
+size = Vector2(226, 75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00lfu"]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_mng68"]
-radius = 50.0
 
 [node name="Node2D" type="Node2D" unique_id=838280850]
 
@@ -93,14 +100,46 @@ position = Vector2(600, 530)
 position = Vector2(-92, 297)
 waypoints = [NodePath("../Waypoint/Marker2D"), NodePath("../Waypoint/Marker2D2"), NodePath("../Waypoint/Marker2D5"), NodePath("../Waypoint/Marker2D7")]
 
-[node name="checkpoint" type="Node2D" parent="." unique_id=1355744328]
+[node name="checkpoint" parent="." unique_id=1124264915 instance=ExtResource("11_6adnh")]
 position = Vector2(133, 310)
+
+[node name="area de escondite(NO escenear)" type="Node2D" parent="." unique_id=563046030]
+position = Vector2(297, 478)
 script = ExtResource("12_acepk")
+Porcentague_de_lentitud = 0.1
 
-[node name="Area2D" type="Area2D" parent="checkpoint" unique_id=915526063]
-collision_mask = 4
+[node name="Area2D" type="Area2D" parent="area de escondite(NO escenear)" unique_id=787706256]
+collision_layer = 16
+collision_mask = 28
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="checkpoint/Area2D" unique_id=1667151240]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area de escondite(NO escenear)/Area2D" unique_id=196826360]
+position = Vector2(103, -27.5)
+shape = SubResource("RectangleShape2D_mng68")
+
+[node name="Zanga(No escenear)" type="Node2D" parent="." unique_id=339667075]
+position = Vector2(219, 453)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Zanga(No escenear)" unique_id=2126322224]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zanga(No escenear)/StaticBody2D" unique_id=159793905]
+shape = SubResource("RectangleShape2D_00lfu")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Zanga(No escenear)/StaticBody2D" unique_id=2137600872]
+polygon = PackedVector2Array(-31, -20, -11, -34, 11, -27, 22, -41, 35, -8, 45, 14, 46, 41, 34, 53, -1, 64, -31, 62, -50, 52, -52, 32, -31, 19, -20, 5, -22, -11)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=95086493]
+position = Vector2(107, 525)
+collision_mask = 20
+script = ExtResource("13_q2lrq")
+azucar = 25.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=211672672]
 shape = SubResource("CircleShape2D_mng68")
 
-[connection signal="body_entered" from="checkpoint/Area2D" to="checkpoint" method="_on_area_2d_body_entered"]
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1698914262]
+texture = ExtResource("14_qdu8n")
+
+[connection signal="body_entered" from="area de escondite(NO escenear)/Area2D" to="area de escondite(NO escenear)" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="area de escondite(NO escenear)/Area2D" to="area de escondite(NO escenear)" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

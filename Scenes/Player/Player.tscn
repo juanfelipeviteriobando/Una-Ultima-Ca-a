@@ -79,7 +79,7 @@ radius = 21.023796
 
 [node name="Player" type="CharacterBody2D" unique_id=1763163025 node_paths=PackedStringArray("Sprite", "BoostScript") groups=["Player"]]
 collision_layer = 4
-collision_mask = 11
+collision_mask = 27
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_ft8w5")
