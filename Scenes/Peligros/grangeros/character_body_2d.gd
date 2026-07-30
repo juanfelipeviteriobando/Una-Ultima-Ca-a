@@ -17,6 +17,11 @@ var SPEED = 80.0
 #@export_category("limites de estado")
 @export var tiempo_max_estado: float = 10
 
+@export_category("Musica")
+@export var LevelMusic: AudioStreamPlayer
+@export var ChaseMusic: AudioStreamPlayer2D
+@export var TimerMusic: Timer
+
 var tiempo_busqueda := 0.0
 
 var nivel_sospecha:int = 0
@@ -30,10 +35,19 @@ func _ready():
 	$Node2D/Area2D/CollisionShape2D.disabled=true
 
 func _physics_process(delta: float) -> void:
-	
-	if estado_actual==EstadoIA.NOQUEADO:
-		return
-	
+	if persigueJugador == true:
+		var MusicTween1 = create_tween()
+		var MusicTween2 = create_tween()
+		MusicTween1.tween_property(LevelMusic, "volume_db", -80.0, 0.5)
+		MusicTween2.tween_property(ChaseMusic, "volume_db", 0.0, 0.1)
+	elif persigueJugador == false:
+		var MusicTween3 = create_tween()
+		var MusicTween4 = create_tween()
+		MusicTween3.tween_property(LevelMusic, "volume_db", 0.0, 0.5)
+		MusicTween4.tween_property(ChaseMusic, "volume_db", -80.0, 0.5)
+
+
+		pass
 	if wait == true&&persigueJugador==false:
 		return
 	

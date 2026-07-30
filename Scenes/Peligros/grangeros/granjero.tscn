@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://c7pn10f3sxtnm" path="res://Scenes/Peligros/grangeros/conoDeVision.gd" id="3_r5noh"]
 [ext_resource type="Script" uid="uid://c5l1df1kduo53" path="res://Scenes/Peligros/grangeros/panelgranjero.gd" id="4_yohfg"]
 [ext_resource type="Script" uid="uid://dilweu4fs3tfd" path="res://Scenes/Peligros/peligros estaticos/nodoDañar.gd" id="5_q83hy"]
+[ext_resource type="AudioStream" uid="uid://b2wtev8e6os85" path="res://Music/1.ogg" id="6_tvp06"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mng68"]
 radius = 8.0
@@ -19,12 +20,13 @@ radius = 61.130997
 [sub_resource type="CircleShape2D" id="CircleShape2D_00lfu"]
 radius = 152.3975
 
-[node name="Granjero" type="CharacterBody2D" unique_id=2116185681 node_paths=PackedStringArray("agent") groups=["Enemigo"]]
+[node name="Granjero" type="CharacterBody2D" unique_id=2116185681 node_paths=PackedStringArray("agent", "ChaseMusic") groups=["Enemigo"]]
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_txc6a")
 agent = NodePath("NavigationAgent2D")
 distanciadeataque = 20
+ChaseMusic = NodePath("AudioStreamPlayer2D")
 
 [node name="Timer" type="Timer" parent="." unique_id=347209944]
 autostart = true
@@ -117,6 +119,11 @@ shape = SubResource("CircleShape2D_a02i8")
 
 [node name="Timer" type="Timer" parent="Node2D" unique_id=1257383879]
 autostart = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=741897584]
+stream = ExtResource("6_tvp06")
+autoplay = true
+max_distance = 855.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="matar"]
