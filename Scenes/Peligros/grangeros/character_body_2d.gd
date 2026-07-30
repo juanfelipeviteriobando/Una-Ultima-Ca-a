@@ -97,6 +97,8 @@ func _physics_process(delta: float) -> void:
 	if distanciaaljugador<=distanciadeataque:
 		limite=false
 		matar(player)
+	if estado_actual==EstadoIA.PATRULLANDO:
+		limite=true
 	velocity=direction.normalized()*SPEED*int(limite)
 	move_and_slide()
 	
