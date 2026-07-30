@@ -264,3 +264,4 @@ func ataque() -> void:
 
 func _on_audio_stream_player_2d_finished() -> void:
 	ChaseMusic.stream = MusicRepeat
+	ChaseMusic.play()
