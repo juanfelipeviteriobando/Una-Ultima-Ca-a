@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://c87bo8xslngoa" path="res://Scenes/Peligros/peligros estaticos/daño_rotativo.tscn" id="9_r3ac6"]
 [ext_resource type="PackedScene" uid="uid://dlvfvhohayj3x" path="res://Scenes/Player/checkpoint.tscn" id="11_6adnh"]
 [ext_resource type="Script" uid="uid://bv6kc3wcvek0x" path="res://Scenes/GameScenes/area_de_escondite.gd" id="12_acepk"]
+[ext_resource type="Texture2D" uid="uid://c51dv50k5clsk" path="res://Sprites/Player/Caña Azucar hide.png" id="13_qdu8n"]
 [ext_resource type="PackedScene" uid="uid://dpstfj5q4eaqq" path="res://Scenes/Objects/Sugar.tscn" id="13_rmkfx"]
 [ext_resource type="AudioStream" uid="uid://k64rp7nyxxcp" path="res://Music/untitled.ogg" id="14_q2lrq"]
 
@@ -115,6 +116,30 @@ collision_mask = 28
 [node name="CollisionShape2D" type="CollisionShape2D" parent="area de escondite(NO escenear)/Area2D" unique_id=196826360]
 position = Vector2(103, -27.5)
 shape = SubResource("RectangleShape2D_mng68")
+
+[node name="Sprite2D" type="Sprite2D" parent="area de escondite(NO escenear)" unique_id=594288207]
+position = Vector2(35, -53)
+texture = ExtResource("13_qdu8n")
+
+[node name="Sprite2D2" type="Sprite2D" parent="area de escondite(NO escenear)" unique_id=1999869605]
+position = Vector2(37, -16)
+texture = ExtResource("13_qdu8n")
+
+[node name="Sprite2D4" type="Sprite2D" parent="area de escondite(NO escenear)" unique_id=1967783380]
+position = Vector2(111, -14)
+texture = ExtResource("13_qdu8n")
+
+[node name="Sprite2D3" type="Sprite2D" parent="area de escondite(NO escenear)" unique_id=409267832]
+position = Vector2(115, -49)
+texture = ExtResource("13_qdu8n")
+
+[node name="Sprite2D5" type="Sprite2D" parent="area de escondite(NO escenear)" unique_id=1764811212]
+position = Vector2(174, -46)
+texture = ExtResource("13_qdu8n")
+
+[node name="Sprite2D6" type="Sprite2D" parent="area de escondite(NO escenear)" unique_id=1684005113]
+position = Vector2(172, -14)
+texture = ExtResource("13_qdu8n")
 
 [node name="Zanga(No escenear)" type="Node2D" parent="." unique_id=339667075]
 position = Vector2(219, 453)

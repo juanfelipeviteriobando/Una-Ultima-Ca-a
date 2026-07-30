@@ -68,6 +68,7 @@ label_settings = SubResource("LabelSettings_82v0y")
 layout_mode = 2
 max_value = 150.0
 value = 150.0
+fill_mode = 3
 stretch_margin_left = 118
 stretch_margin_top = 17
 stretch_margin_bottom = 15

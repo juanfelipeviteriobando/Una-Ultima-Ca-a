@@ -6,7 +6,8 @@ extends CharacterBody2D
 @export var Aceleration: float = 500.0
 
 @export var BoostScript: Node
-
+@export var animacion: AnimatedSprite2D
+@export var sprite: Sprite2D
 @export var LevelMusic: Node
 var ChaseMusic
 
@@ -29,6 +30,7 @@ signal WaterChange(Water)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	animacion.hide()
 	ChaseMusic = get_tree().get_first_node_in_group("Chase")
 	ActualWater = minWater
 
@@ -66,4 +68,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func morir():
+	sprite.hide()
+	animacion.show()
+	animacion.play("marchitarse")
+	await animacion.animation_finished
+	sprite.show()
+	if !is_inside_tree():
+		return
 	get_tree().reload_current_scene()

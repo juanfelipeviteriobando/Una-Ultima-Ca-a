@@ -165,6 +165,7 @@ func _on_timer_2_timeout() -> void:
 
 func _on_area_2d_2_body_exited(body: Node2D) -> void:
 	await get_tree().create_timer(1).timeout
+	cambiar_estado(EstadoIA.PATRULLANDO)
 	persigueJugador=false
 	nivel_sospecha=0
 	
