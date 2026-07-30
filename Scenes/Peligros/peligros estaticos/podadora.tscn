@@ -2,17 +2,25 @@
 
 [ext_resource type="Script" uid="uid://c6j2ik54qfd5a" path="res://Scenes/GameScenes/IADeSeguimientoSimple.gd" id="1_nu78p"]
 [ext_resource type="Script" uid="uid://dilweu4fs3tfd" path="res://Scenes/Peligros/peligros estaticos/nodoDañar.gd" id="2_alljl"]
+[ext_resource type="Texture2D" uid="uid://2ithlgdql7ti" path="res://Sprites/UI o Objetos/objetos/ChatGPT_Image_30_jul_2026__06_22_39_p.m.-removebg-preview.png" id="2_rn7bg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mng68"]
 size = Vector2(12, 110)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_00lfu"]
+size = Vector2(62, 32)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1858532645 node_paths=PackedStringArray("area")]
+[node name="Podadora" type="CharacterBody2D" unique_id=1858532645 node_paths=PackedStringArray("area")]
 collision_layer = 3
 collision_mask = 4
 script = ExtResource("1_nu78p")
 area = NodePath("Area2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=180860915]
+position = Vector2(-21.999998, 2.0489097e-08)
+rotation = -1.5625849
+scale = Vector2(0.4055354, -0.2468701)
+texture = ExtResource("2_rn7bg")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1616597509]
 collision_layer = 3
@@ -25,6 +33,7 @@ position = Vector2(16, 2)
 shape = SubResource("RectangleShape2D_mng68")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=280450892]
+position = Vector2(-24, 1)
 shape = SubResource("RectangleShape2D_00lfu")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

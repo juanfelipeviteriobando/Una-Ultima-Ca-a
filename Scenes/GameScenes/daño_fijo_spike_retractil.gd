@@ -7,6 +7,7 @@ var arriba := false
 
 
 func _ready():
+	$AnimatedSprite2D.play("default")
 	timer.start()
 
 

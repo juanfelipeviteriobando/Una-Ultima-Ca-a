@@ -92,7 +92,7 @@ position = Vector2(250, 555)
 
 [node name="daño fijo spike retractil" parent="." unique_id=1902753410 instance=ExtResource("8_m3en6")]
 position = Vector2(445, 551)
-grande = Vector2(5, 5)
+grande = Vector2(2, 2)
 
 [node name="daño rotativo" parent="." unique_id=131482303 instance=ExtResource("9_r3ac6")]
 position = Vector2(600, 530)

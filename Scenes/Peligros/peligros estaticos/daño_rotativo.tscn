@@ -2,12 +2,11 @@
 
 [ext_resource type="Script" uid="uid://cl5lo1gsrs5pf" path="res://Scenes/GameScenes/daño_rotativo.gd" id="1_0acli"]
 [ext_resource type="Script" uid="uid://dilweu4fs3tfd" path="res://Scenes/Peligros/peligros estaticos/nodoDañar.gd" id="2_bcit0"]
+[ext_resource type="Texture2D" uid="uid://b55ketunkd57a" path="res://Sprites/UI o Objetos/objetos/Spear single.png" id="3_2ic7u"]
+[ext_resource type="Texture2D" uid="uid://dq00nrtpqcw4o" path="res://Sprites/UI o Objetos/objetos/Wood.png" id="4_qsbm7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0acli"]
 size = Vector2(8, 48)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bcit0"]
-size = Vector2(8.617065, 35.00089)
 
 [node name="daño rotativo" type="Node2D" unique_id=131482303 node_paths=PackedStringArray("area")]
 script = ExtResource("1_0acli")
@@ -24,19 +23,23 @@ script = ExtResource("2_bcit0")
 position = Vector2(-1, -25)
 shape = SubResource("RectangleShape2D_0acli")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/Area2D" unique_id=898217678]
-position = Vector2(12.000001, -49)
-rotation = 1.5836047
-shape = SubResource("RectangleShape2D_bcit0")
-
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2D/Area2D" unique_id=1121113033]
 position = Vector2(-1, 21)
 rotation = 0.009972557
 shape = SubResource("RectangleShape2D_0acli")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/Area2D" unique_id=1882244835]
-position = Vector2(-14, 41.000004)
-rotation = 1.7042239
-shape = SubResource("RectangleShape2D_bcit0")
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Area2D" unique_id=561892164]
+position = Vector2(-0.9999999, -32)
+scale = Vector2(0.265625, 0.23828124)
+texture = ExtResource("3_2ic7u")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D/Area2D" unique_id=1880410717]
+position = Vector2(-1.4210855e-14, 32)
+rotation = 3.1415927
+scale = Vector2(0.265625, 0.23828124)
+texture = ExtResource("3_2ic7u")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Node2D/Area2D" unique_id=1233825180]
+texture = ExtResource("4_qsbm7")
 
 [connection signal="body_entered" from="Node2D/Area2D" to="." method="_on_area_2d_body_entered"]
