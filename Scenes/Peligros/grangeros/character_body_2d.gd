@@ -30,6 +30,7 @@ func _ready():
 	$Node2D/Area2D/CollisionShape2D.disabled=true
 
 func _physics_process(delta: float) -> void:
+	
 	if estado_actual==EstadoIA.NOQUEADO:
 		return
 	

@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dlvfvhohayj3x" path="res://Scenes/Player/checkpoint.tscn" id="11_6adnh"]
 [ext_resource type="Script" uid="uid://bv6kc3wcvek0x" path="res://Scenes/GameScenes/area_de_escondite.gd" id="12_acepk"]
 [ext_resource type="PackedScene" uid="uid://dpstfj5q4eaqq" path="res://Scenes/Objects/Sugar.tscn" id="13_rmkfx"]
+[ext_resource type="AudioStream" uid="uid://k64rp7nyxxcp" path="res://Music/untitled.ogg" id="14_q2lrq"]
 
 [sub_resource type="Resource" id="Resource_gop8n"]
 script = ExtResource("5_bxen2")
@@ -124,8 +125,38 @@ shape = SubResource("RectangleShape2D_00lfu")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Zanga(No escenear)/StaticBody2D" unique_id=2137600872]
 polygon = PackedVector2Array(-31, -20, -11, -34, 11, -27, 22, -41, 35, -8, 45, 14, 46, 41, 34, 53, -1, 64, -31, 62, -50, 52, -52, 32, -31, 19, -20, 5, -22, -11)
 
-[node name="Area2D" parent="." unique_id=384532632 instance=ExtResource("13_rmkfx")]
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=951324852]
+stream = ExtResource("14_q2lrq")
+autoplay = true
+
+[node name="Azucar" type="Node2D" parent="." unique_id=862839653]
+
+[node name="Sugar" parent="Azucar" unique_id=384532632 instance=ExtResource("13_rmkfx")]
 position = Vector2(107, 525)
+
+[node name="Sugar2" parent="Azucar" unique_id=1330799550 instance=ExtResource("13_rmkfx")]
+position = Vector2(-83, 522)
+
+[node name="Sugar3" parent="Azucar" unique_id=194960339 instance=ExtResource("13_rmkfx")]
+position = Vector2(20, 365)
+
+[node name="Sugar4" parent="Azucar" unique_id=2111616514 instance=ExtResource("13_rmkfx")]
+position = Vector2(295, 282)
+
+[node name="Sugar5" parent="Azucar" unique_id=1740604271 instance=ExtResource("13_rmkfx")]
+position = Vector2(462, 515)
+
+[node name="Sugar6" parent="Azucar" unique_id=185624154 instance=ExtResource("13_rmkfx")]
+position = Vector2(655, 448)
+
+[node name="Sugar7" parent="Azucar" unique_id=1952556914 instance=ExtResource("13_rmkfx")]
+position = Vector2(756, 353)
+
+[node name="Sugar8" parent="Azucar" unique_id=277275353 instance=ExtResource("13_rmkfx")]
+position = Vector2(726, 219)
+
+[node name="Sugar9" parent="Azucar" unique_id=564606251 instance=ExtResource("13_rmkfx")]
+position = Vector2(-5, 202)
 
 [connection signal="body_entered" from="area de escondite(NO escenear)/Area2D" to="area de escondite(NO escenear)" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="area de escondite(NO escenear)/Area2D" to="area de escondite(NO escenear)" method="_on_area_2d_body_exited"]

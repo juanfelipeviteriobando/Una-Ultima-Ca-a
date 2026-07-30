@@ -14,6 +14,9 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	hide()
 	$CollisionShape2D.disabled = true
+	monitoring = false
+	monitorable = false
+	set_collision_mask_value(3, false)
 	body.BoostScript.LoseBoost(-azucar)
 	return
 
