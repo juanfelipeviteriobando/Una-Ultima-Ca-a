@@ -20,7 +20,7 @@ var SPEED = 80.0
 @export_category("Musica")
 @export var LevelMusic: AudioStreamPlayer
 @export var ChaseMusic: AudioStreamPlayer2D
-@export var TimerMusic: Timer
+@export var MusicRepeat: AudioStream
 
 var tiempo_busqueda := 0.0
 
@@ -40,11 +40,11 @@ func _physics_process(delta: float) -> void:
 		var MusicTween2 = create_tween()
 		MusicTween1.tween_property(LevelMusic, "volume_db", -80.0, 0.5)
 		MusicTween2.tween_property(ChaseMusic, "volume_db", 0.0, 0.1)
-	elif persigueJugador == false:
-		var MusicTween3 = create_tween()
-		var MusicTween4 = create_tween()
-		MusicTween3.tween_property(LevelMusic, "volume_db", 0.0, 0.5)
-		MusicTween4.tween_property(ChaseMusic, "volume_db", -80.0, 0.5)
+	if persigueJugador == false:
+		var MusicTween1 = create_tween()
+		var MusicTween2 = create_tween()
+		MusicTween1.tween_property(LevelMusic, "volume_db", 0.0, 0.5)
+		MusicTween2.tween_property(ChaseMusic, "volume_db", -80.0, 0.5)
 
 
 		pass
@@ -126,6 +126,10 @@ func _on_timer_timeout() -> void:
 				return
 			agent.target_position=waypoints[current_Index].global_position
 	if persigueJugador==true:
+		var MusicTween1 = create_tween()
+		var MusicTween2 = create_tween()
+		MusicTween1.tween_property(LevelMusic, "volume_db", -80.0, 0.5)
+		MusicTween2.tween_property(ChaseMusic, "volume_db", 0.0, 0.1)
 		agent.target_position=player.global_position
 		
 
@@ -225,6 +229,7 @@ func matar(body: Node2D) -> void:
 	if body.is_in_group("Player") and is_inside_tree():
 		var boost = body.get_node("BoostScript")
 		if boost.ActualBoost <= boost.MinBoost:
+			await get_tree().create_timer(0.5).timeout
 			body.morir()
 
 
@@ -259,3 +264,7 @@ func ataque() -> void:
 	await get_tree().create_timer(0.1).timeout
 	
 	$Node2D.hide()
+
+
+func _on_audio_stream_player_2d_finished() -> void:
+	ChaseMusic.stream = MusicRepeat
