@@ -61,6 +61,10 @@ func Dashcooldown():
 func _physics_process(delta: float) -> void:
 	if BoostScript.ActualBoost <= BoostScript.MinBoost:
 		Granjero.persigueJugador = true
+		var MusicTween1 = create_tween()
+		var MusicTween2 = create_tween()
+		MusicTween1.tween_property(Player.LevelMusic, "volume_db", -80.0, 0.5)
+		MusicTween2.tween_property(Player.ChaseMusic, "volume_db", 0.0, 0.1)
 		Player.velocity = Vector2.ZERO
 		Current_State = STATE.IDLE
 		Animations.play("Idle")

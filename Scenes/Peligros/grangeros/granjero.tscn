@@ -122,7 +122,7 @@ shape = SubResource("CircleShape2D_a02i8")
 [node name="Timer" type="Timer" parent="Node2D" unique_id=1257383879]
 autostart = true
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=741897584]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=741897584 groups=["Chase"]]
 stream = ExtResource("6_tvp06")
 autoplay = true
 max_distance = 1200.0

@@ -7,6 +7,9 @@ extends CharacterBody2D
 
 @export var BoostScript: Node
 
+@export var LevelMusic: Node
+var ChaseMusic
+
 var minWater: float = 0.0
 var MaxWater: float = 50.0
 var ActualWater: float
@@ -26,6 +29,7 @@ signal WaterChange(Water)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	ChaseMusic = get_tree().get_first_node_in_group("Chase")
 	ActualWater = minWater
 
 	if GameManager.has_checkpoint():

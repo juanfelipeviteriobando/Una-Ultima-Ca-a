@@ -126,10 +126,6 @@ func _on_timer_timeout() -> void:
 				return
 			agent.target_position=waypoints[current_Index].global_position
 	if persigueJugador==true:
-		var MusicTween1 = create_tween()
-		var MusicTween2 = create_tween()
-		MusicTween1.tween_property(LevelMusic, "volume_db", -80.0, 0.5)
-		MusicTween2.tween_property(ChaseMusic, "volume_db", 0.0, 0.1)
 		agent.target_position=player.global_position
 		
 
