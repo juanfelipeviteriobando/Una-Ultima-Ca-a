@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://cxef34df4k8em"]
 
-[ext_resource type="Texture2D" uid="uid://ty6mpdubdfxo" path="res://Sprites/UI o Objetos/BoostBar.png" id="1_7jiju"]
 [ext_resource type="Script" uid="uid://cl6uv06cotfsi" path="res://Scenes/UI/player_ui.gd" id="1_t3flm"]
 [ext_resource type="FontFile" uid="uid://gclnrsdoupre" path="res://Font/PressStart2P.ttf" id="2_t3flm"]
+[ext_resource type="Texture2D" uid="uid://35cmast4qjil" path="res://Sprites/UI o Objetos/azucarbar.png" id="3_8n2hl"]
+[ext_resource type="Texture2D" uid="uid://cm2lagbxly5sf" path="res://Sprites/UI o Objetos/waterbar.png" id="4_8n2hl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uhyxi"]
 font = ExtResource("2_t3flm")
@@ -11,9 +12,6 @@ font_size = 10
 [sub_resource type="LabelSettings" id="LabelSettings_82v0y"]
 font = ExtResource("2_t3flm")
 font_size = 10
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t3flm"]
-load_path = "res://.godot/imported/BoostBar.png-ae217e120cc13f7f060959023319ebef.ctex"
 
 [node name="PlayerUI" type="CanvasLayer" unique_id=1754467272 node_paths=PackedStringArray("BoostBar", "WaterBar")]
 script = ExtResource("1_t3flm")
@@ -50,11 +48,11 @@ label_settings = SubResource("LabelSettings_uhyxi")
 layout_mode = 2
 max_value = 300.0
 value = 100.0
-nine_patch_stretch = true
-stretch_margin_top = 20
-stretch_margin_right = 150
+stretch_margin_left = 28
+stretch_margin_top = 14
+stretch_margin_right = 143
 stretch_margin_bottom = 10
-texture_progress = ExtResource("1_7jiju")
+texture_progress = ExtResource("3_8n2hl")
 
 [node name="WaterBar" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=1154523383]
 layout_mode = 2
@@ -68,8 +66,7 @@ label_settings = SubResource("LabelSettings_82v0y")
 layout_mode = 2
 max_value = 150.0
 value = 150.0
-fill_mode = 3
 stretch_margin_left = 118
 stretch_margin_top = 17
 stretch_margin_bottom = 15
-texture_progress = SubResource("CompressedTexture2D_t3flm")
+texture_progress = ExtResource("4_8n2hl")
