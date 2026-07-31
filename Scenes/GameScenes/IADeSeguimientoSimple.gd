@@ -5,7 +5,8 @@ extends CharacterBody2D
 @export var distancia_llegada: float = 10.0
 @export var area: Area2D 
 var indice_actual: int = 0
-
+func _ready() -> void:
+	$AnimatedSprite2D.play("default")
 func _physics_process(delta):
 	if waypoints.is_empty():
 		return
