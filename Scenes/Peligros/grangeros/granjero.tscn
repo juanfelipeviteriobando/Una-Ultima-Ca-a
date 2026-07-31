@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bfua4la1fg2aw" path="res://Scenes/Peligros/grangeros/character_body_2d.gd" id="1_txc6a"]
 [ext_resource type="AudioStream" uid="uid://dclleavojae8q" path="res://Music/2.ogg" id="2_ny2l0"]
-[ext_resource type="Texture2D" uid="uid://cym36xnotha5e" path="res://Sprites/placeholders/granguero placeholder.png" id="2_r5noh"]
 [ext_resource type="Script" uid="uid://c7pn10f3sxtnm" path="res://Scenes/Peligros/grangeros/conoDeVision.gd" id="3_r5noh"]
+[ext_resource type="Texture2D" uid="uid://lbrql8ekxiua" path="res://Sprites/Grannjero/GranjeroCamina.png" id="4_ny2l0"]
 [ext_resource type="Script" uid="uid://c5l1df1kduo53" path="res://Scenes/Peligros/grangeros/panelgranjero.gd" id="4_yohfg"]
 [ext_resource type="Script" uid="uid://dilweu4fs3tfd" path="res://Scenes/Peligros/peligros estaticos/nodoDañar.gd" id="5_q83hy"]
 [ext_resource type="AudioStream" uid="uid://b2wtev8e6os85" path="res://Music/1.ogg" id="6_tvp06"]
@@ -14,6 +14,42 @@ height = 20.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mng68"]
 radius = 40.012497
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbl13"]
+atlas = ExtResource("4_ny2l0")
+region = Rect2(0, 0, 344, 356)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4amd"]
+atlas = ExtResource("4_ny2l0")
+region = Rect2(344, 0, 344, 356)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n44p1"]
+atlas = ExtResource("4_ny2l0")
+region = Rect2(0, 356, 344, 356)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxmb1"]
+atlas = ExtResource("4_ny2l0")
+region = Rect2(344, 356, 344, 356)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_82v0y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbl13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4amd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n44p1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxmb1")
+}],
+"loop": 1,
+"name": &"Walk",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a02i8"]
 radius = 61.130997
@@ -33,10 +69,6 @@ MusicRepeat = ExtResource("2_ny2l0")
 [node name="Timer" type="Timer" parent="." unique_id=347209944]
 autostart = true
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=72989903]
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("2_r5noh")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2009642620]
 position = Vector2(0, 6)
 shape = SubResource("CapsuleShape2D_mng68")
@@ -52,7 +84,16 @@ shape = SubResource("CircleShape2D_mng68")
 debug_enabled = true
 
 [node name="vision" type="Node2D" parent="." unique_id=1310319761]
+scale = Vector2(0.3, 0.3)
 script = ExtResource("3_r5noh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="vision" unique_id=1637800795]
+rotation = -1.5707964
+scale = Vector2(0.6666667, 0.6666667)
+sprite_frames = SubResource("SpriteFrames_82v0y")
+animation = &"Walk"
+autoplay = "Walk"
+frame_progress = 0.41561007
 
 [node name="Area2D" type="Area2D" parent="vision" unique_id=467513058]
 collision_layer = 2
@@ -125,7 +166,6 @@ autostart = true
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=741897584 groups=["Chase"]]
 stream = ExtResource("6_tvp06")
 autoplay = true
-max_distance = 1200.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="matar"]
