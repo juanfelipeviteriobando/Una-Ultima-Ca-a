@@ -52,10 +52,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a02i8"]
-radius = 61.130997
+radius = 22.999998
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_00lfu"]
-radius = 152.3975
+radius = 296.68536
 
 [node name="Granjero" type="CharacterBody2D" unique_id=2116185681 node_paths=PackedStringArray("agent", "ChaseMusic") groups=["Enemigo"]]
 motion_mode = 1
@@ -105,16 +105,18 @@ polygon = PackedVector2Array(0, 0, 101, 60, 133, 28, 132, -23, 100, -63)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="vision/Area2D" unique_id=569787103]
 scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("CircleShape2D_a02i8")
+debug_color = Color(0.9882353, 0, 0, 0.41960785)
 
 [node name="Area2D2" type="Area2D" parent="vision" unique_id=1694490513]
 collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="vision/Area2D2" unique_id=883768555]
-polygon = PackedVector2Array(4, 1, 14, 16, 160, 103, 221, 78, 264, -3, 213, -78, 169, -92, 15, -13)
+polygon = PackedVector2Array(4, 1, 14, 16, 393.3333, 170, 446.66666, 80, 483.3333, 13.333333, 443.3333, -56.666664, 376.66666, -146.66666, 15, -13)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="vision/Area2D2" unique_id=1314011290]
 shape = SubResource("CircleShape2D_00lfu")
+debug_color = Color(0.2508712, 0.5057017, 1, 0.41960785)
 
 [node name="Timer2" type="Timer" parent="." unique_id=1795648827]
 wait_time = 0.5
@@ -159,6 +161,7 @@ script = ExtResource("5_q83hy")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D" unique_id=1184608307]
 scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("CircleShape2D_a02i8")
+debug_color = Color(0.984068, 0, 0.35152128, 0.41960785)
 
 [node name="Timer" type="Timer" parent="Node2D" unique_id=1257383879]
 autostart = true

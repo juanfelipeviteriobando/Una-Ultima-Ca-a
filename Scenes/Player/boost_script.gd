@@ -13,6 +13,7 @@ func _ready() -> void:
 func LoseBoost(LosePoint):
 	ActualBoost -= LosePoint
 	BoostLose.emit(ActualBoost)
+
 	
 	if ActualBoost <= MinBoost:
 		ActualBoost = MinBoost
