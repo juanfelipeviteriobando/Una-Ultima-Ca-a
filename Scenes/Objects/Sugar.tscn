@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cxbcji46jmiwd" path="res://Scenes/GameScenes/azucar.gd" id="1_y80fw"]
 [ext_resource type="Texture2D" uid="uid://cqgyo4vspaa3t" path="res://Sprites/UI o Objetos/Azucar.png" id="2_y80fw"]
+[ext_resource type="AudioStream" uid="uid://buwolaunsbe88" path="res://SFX/Object.wav" id="3_ur3p3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mng68"]
 
@@ -17,5 +18,14 @@ shape = SubResource("CircleShape2D_mng68")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=251375742]
 texture = ExtResource("2_y80fw")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1999624607]
+stream = ExtResource("3_ur3p3")
+max_distance = 131.0
+
+[node name="Timer" type="Timer" parent="." unique_id=1005537291]
+wait_time = 60.0
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
