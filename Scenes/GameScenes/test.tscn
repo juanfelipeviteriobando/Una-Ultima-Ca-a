@@ -73,7 +73,7 @@ waypoints = [NodePath("../Waypoint/Marker2D"), NodePath("../Waypoint/Marker2D2")
 LevelMusic = NodePath("../Music")
 
 [node name="Player" parent="." unique_id=1763163025 node_paths=PackedStringArray("LevelMusic") instance=ExtResource("1_53y48")]
-position = Vector2(143, 390)
+position = Vector2(167, 389)
 LevelMusic = NodePath("../Music")
 
 [node name="Waypoint" type="Node2D" parent="." unique_id=1769793197]
@@ -102,7 +102,7 @@ position = Vector2(-64, 221)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=718256891]
 physics_interpolation_mode = 1
 top_level = true
-position = Vector2(143, 390)
+position = Vector2(167, 389)
 zoom = Vector2(2, 2)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=1111487616]
@@ -113,7 +113,7 @@ metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=2050407689 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(143, 390)
+position = Vector2(167, 389)
 script = ExtResource("4_e4wcu")
 priority = 5
 follow_mode = 2
