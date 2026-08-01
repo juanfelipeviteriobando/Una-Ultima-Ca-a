@@ -76,3 +76,4 @@ func morir():
 	if !is_inside_tree():
 		return
 	get_tree().reload_current_scene()
+	

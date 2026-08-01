@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://c87fyde5an8sy"]
+
+[ext_resource type="Script" uid="uid://c6gekoxpa6in6" path="res://Scenes/GameScenes/menu_principal.gd" id="1_jwl68"]
+[ext_resource type="Texture2D" uid="uid://doec6buttu5oc" path="res://Sprites/UI o Objetos/pantallas/tantalla de win.png" id="1_n7qix"]
+[ext_resource type="FontFile" uid="uid://bsqcl8orxonsh" path="res://Sprites/UI o Objetos/botones/GrapeSoda.ttf" id="2_jwl68"]
+[ext_resource type="Texture2D" uid="uid://dgnt2nncmgax7" path="res://Sprites/UI o Objetos/botones/Caña Azucar inclinada button.png" id="3_kg55l"]
+[ext_resource type="Texture2D" uid="uid://u8qlb3qq4mv6" path="res://Sprites/UI o Objetos/botones/Caña Azucar button pressed.png" id="4_i44fn"]
+[ext_resource type="Texture2D" uid="uid://bphysamhi7v4y" path="res://Sprites/UI o Objetos/botones/Caña Azucar Hover button.png" id="5_tigks"]
+
+[node name="PantallaDeVictoria" type="Control" unique_id=351161821 node_paths=PackedStringArray("BUTTONINICIO", "BUTTONSALIR")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jwl68")
+BUTTONINICIO = NodePath("TextureButton")
+BUTTONSALIR = NodePath("TextureButton2")
+escena_juego = "res://Scenes/GameScenes/Menu_principal.tscn"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=531994782]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 639.0
+offset_bottom = 360.0
+texture = ExtResource("1_n7qix")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="." unique_id=1454246189]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 32.0
+offset_right = 632.0
+offset_bottom = 138.0
+theme_override_colors/font_color = Color(0.6745098, 0.69411767, 0.7647059, 1)
+theme_override_fonts/font = ExtResource("2_jwl68")
+theme_override_font_sizes/font_size = 59
+text = "Lo Lograste"
+
+[node name="Label2" type="Label" parent="." unique_id=366717386]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 78.0
+offset_right = 598.0
+offset_bottom = 184.0
+theme_override_colors/font_color = Color(0.6745098, 0.69411767, 0.7647059, 1)
+theme_override_fonts/font = ExtResource("2_jwl68")
+theme_override_font_sizes/font_size = 59
+text = "llegaste a casa"
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1114277200]
+layout_mode = 0
+offset_left = 238.0
+offset_top = 103.0
+offset_right = 440.0
+offset_bottom = 231.0
+texture_normal = ExtResource("3_kg55l")
+texture_pressed = ExtResource("4_i44fn")
+texture_hover = ExtResource("5_tigks")
+
+[node name="Label" type="Label" parent="TextureButton" unique_id=2135920699]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 71.0
+offset_right = 197.0
+offset_bottom = 108.0
+theme_override_fonts/font = ExtResource("2_jwl68")
+theme_override_font_sizes/font_size = 27
+text = "jugar de nuevo"
+
+[node name="TextureButton2" type="TextureButton" parent="." unique_id=275969104]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 226.0
+offset_right = 442.0
+offset_bottom = 354.0
+texture_normal = ExtResource("3_kg55l")
+texture_pressed = ExtResource("4_i44fn")
+texture_hover = ExtResource("5_tigks")
+
+[node name="Label" type="Label" parent="TextureButton2" unique_id=78019523]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 72.0
+offset_right = 237.0
+offset_bottom = 109.0
+theme_override_fonts/font = ExtResource("2_jwl68")
+theme_override_font_sizes/font_size = 28
+text = "Salir"
