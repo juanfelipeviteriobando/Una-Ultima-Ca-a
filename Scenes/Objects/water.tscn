@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bn8mk5sxf7n0s"]
 
 [ext_resource type="Script" uid="uid://cbtm0wnjv4yxk" path="res://Scenes/Objects/water.gd" id="1_c5jd4"]
-[ext_resource type="Texture2D" uid="uid://cu11a2anfgptm" path="res://Sprites/UI o Objetos/Water.png" id="1_po638"]
+[ext_resource type="Texture2D" uid="uid://betwj4bh6t2n1" path="res://Sprites/UI o Objetos/Water.png" id="1_po638"]
+[ext_resource type="AudioStream" uid="uid://cwl1opaxwklev" path="res://SFX/Water.wav" id="3_q1fuf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_82v0y"]
 radius = 11.401754
@@ -17,6 +18,10 @@ texture = ExtResource("1_po638")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=674009433]
 position = Vector2(1, 3)
 shape = SubResource("CircleShape2D_82v0y")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1371797168]
+stream = ExtResource("3_q1fuf")
+max_distance = 1020.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
