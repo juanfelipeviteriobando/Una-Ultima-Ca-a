@@ -123,6 +123,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Panel" type="Panel" parent="." unique_id=347353200]
+visible = false
 offset_left = -19.0
 offset_top = -54.0
 offset_right = 21.0
