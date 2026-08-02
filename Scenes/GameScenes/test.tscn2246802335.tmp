@@ -232,7 +232,7 @@ grande = Vector2(2, 2)
 position = Vector2(600, 530)
 
 [node name="CharacterBody2D" parent="." unique_id=1858532645 node_paths=PackedStringArray("waypoints") instance=ExtResource("9_m3en6")]
-position = Vector2(-71, 222)
+position = Vector2(-92, 297)
 waypoints = [NodePath("../Waypoint/Marker2D"), NodePath("../Waypoint/Marker2D2"), NodePath("../Waypoint/Marker2D5"), NodePath("../Waypoint/Marker2D7")]
 
 [node name="checkpoint" parent="." unique_id=1124264915 instance=ExtResource("11_6adnh")]

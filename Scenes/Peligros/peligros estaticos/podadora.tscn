@@ -74,10 +74,13 @@ size = Vector2(12, 110)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_00lfu"]
 size = Vector2(62, 32)
 
-[node name="Podadora" type="CharacterBody2D" unique_id=1858532645 node_paths=PackedStringArray("area")]
+[node name="Podadora" type="CharacterBody2D" unique_id=1858532645 node_paths=PackedStringArray("NavigationAgent", "area")]
 collision_layer = 3
 collision_mask = 4
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_nu78p")
+NavigationAgent = NodePath("NavigationAgent2D")
 area = NodePath("Area2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=201121842]
@@ -101,5 +104,13 @@ shape = SubResource("RectangleShape2D_mng68")
 position = Vector2(-24, 1)
 shape = SubResource("RectangleShape2D_00lfu")
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=704146100]
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="." unique_id=626670776]
+wait_time = 0.5
+autostart = true
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
