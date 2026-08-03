@@ -11,8 +11,7 @@ extends CharacterBody2D
 var indice_actual := 0
 
 @export var NavigationAgent: NavigationAgent2D
-@export var area: Area2D 
-var indice_actual: int = 0
+
 
 func _ready() -> void:
 	$AnimatedSprite2D.play("default")
