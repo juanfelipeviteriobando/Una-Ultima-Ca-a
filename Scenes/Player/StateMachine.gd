@@ -9,6 +9,8 @@ var Current_State: STATE = STATE.IDLE
 @export var variable:variables
 var scale_tween
 var Dash_Direction := Vector2.ZERO
+@export var UI_Jugador: CanvasLayer
+@export var UI_Tutorial: CanvasLayer
 
 var Granjero
 
@@ -90,6 +92,8 @@ func estado_Idle(delta: float) -> void:
 
 func estado_Moving(delta: float) -> void:
 	MoveCaracteristics()
+	UI_Jugador.visible = true
+	UI_Tutorial.visible = false
 	BoostScript.LoseBoost(LoseBoostPoint)
 	Player.velocity = Player.velocity.move_toward(Player.Input_Dir * Player.Speed, Player.Aceleration * delta)
 
