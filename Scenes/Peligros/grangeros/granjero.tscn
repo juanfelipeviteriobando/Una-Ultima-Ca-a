@@ -55,7 +55,7 @@ animations = [{
 radius = 22.999998
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_00lfu"]
-radius = 296.68536
+radius = 433.5384
 
 [node name="Granjero" type="CharacterBody2D" unique_id=2116185681 node_paths=PackedStringArray("agent", "ChaseMusic") groups=["Enemigo"]]
 motion_mode = 1
@@ -100,7 +100,7 @@ collision_layer = 2
 collision_mask = 20
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="vision/Area2D" unique_id=113884365]
-polygon = PackedVector2Array(0, 0, 101, 60, 133, 28, 132, -23, 100, -63)
+polygon = PackedVector2Array(0, 0, 176.66666, 143.33333, 233.33333, 46.666664, 233.33333, -40, 163.33333, -123.33333)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="vision/Area2D" unique_id=569787103]
 scale = Vector2(1.0000001, 1.0000001)
@@ -112,7 +112,7 @@ collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="vision/Area2D2" unique_id=883768555]
-polygon = PackedVector2Array(4, 1, 14, 16, 393.3333, 170, 446.66666, 80, 483.3333, 13.333333, 443.3333, -56.666664, 376.66666, -146.66666, 15, -13)
+polygon = PackedVector2Array(4, 1, 14, 16, 533.3333, 216.66666, 586.6666, 130, 636.6666, 3.3333333, 590, -96.666664, 503.3333, -170, 15, -13)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="vision/Area2D2" unique_id=1314011290]
 shape = SubResource("CircleShape2D_00lfu")
