@@ -3,9 +3,13 @@
 [ext_resource type="Script" uid="uid://c6gekoxpa6in6" path="res://Scenes/GameScenes/menu_principal.gd" id="1_jissh"]
 [ext_resource type="Texture2D" uid="uid://cqwaqqbeoichk" path="res://Sprites/UI o Objetos/pantallas/portada.png" id="1_mh2yw"]
 [ext_resource type="Texture2D" uid="uid://dgnt2nncmgax7" path="res://Sprites/UI o Objetos/botones/Caña Azucar inclinada button.png" id="2_0q10n"]
+[ext_resource type="AudioStream" uid="uid://d0vt8bnhp3l8k" path="res://Music/menurep.ogg" id="2_g3pne"]
 [ext_resource type="Texture2D" uid="uid://u8qlb3qq4mv6" path="res://Sprites/UI o Objetos/botones/Caña Azucar button pressed.png" id="3_c7ntr"]
 [ext_resource type="Texture2D" uid="uid://bphysamhi7v4y" path="res://Sprites/UI o Objetos/botones/Caña Azucar Hover button.png" id="4_c7ntr"]
 [ext_resource type="FontFile" uid="uid://bsqcl8orxonsh" path="res://Sprites/UI o Objetos/botones/GrapeSoda.ttf" id="5_tfdxv"]
+[ext_resource type="AudioStream" uid="uid://bd8g5k3161rvf" path="res://SFX/Button.wav" id="7_glynj"]
+[ext_resource type="AudioStream" uid="uid://bn3h0njs8igat" path="res://SFX/Clicked.wav" id="8_gfxlf"]
+[ext_resource type="AudioStream" uid="uid://bq727sbs22kck" path="res://Music/menu.ogg" id="9_gsb7r"]
 
 [node name="MenuPrincipal" type="Control" unique_id=4562986 node_paths=PackedStringArray("BUTTONINICIO", "BUTTONSALIR")]
 layout_mode = 3
@@ -17,6 +21,7 @@ grow_vertical = 2
 script = ExtResource("1_jissh")
 BUTTONINICIO = NodePath("TextureButton")
 BUTTONSALIR = NodePath("TextureButton2")
+MusicRepeat = ExtResource("2_g3pne")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=127469247]
 layout_mode = 0
@@ -76,3 +81,19 @@ offset_bottom = 109.0
 theme_override_fonts/font = ExtResource("5_tfdxv")
 theme_override_font_sizes/font_size = 28
 text = "Salir"
+
+[node name="ButtonSounds" type="AudioStreamPlayer" parent="." unique_id=1766765289]
+stream = ExtResource("7_glynj")
+
+[node name="Clicked" type="AudioStreamPlayer" parent="." unique_id=669381209]
+stream = ExtResource("8_gfxlf")
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1916571630]
+stream = ExtResource("9_gsb7r")
+autoplay = true
+
+[connection signal="focus_entered" from="TextureButton" to="." method="_on_texture_button_focus_entered"]
+[connection signal="mouse_entered" from="TextureButton" to="." method="_on_texture_button_mouse_entered"]
+[connection signal="focus_entered" from="TextureButton2" to="." method="_on_texture_button_2_focus_entered"]
+[connection signal="mouse_entered" from="TextureButton2" to="." method="_on_texture_button_2_mouse_entered"]
+[connection signal="finished" from="Music" to="." method="_on_music_finished"]

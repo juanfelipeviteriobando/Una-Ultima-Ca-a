@@ -3,11 +3,16 @@ extends CharacterBody2D
 @export var waypoints: Array[Marker2D]
 @export var velocidad: float = 100.0
 @export var distancia_llegada: float = 10.0
+
 @export var area: Area2D
 
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 
 var indice_actual := 0
+
+@export var NavigationAgent: NavigationAgent2D
+@export var area: Area2D 
+var indice_actual: int = 0
 
 func _ready() -> void:
 	$AnimatedSprite2D.play("default")
@@ -33,6 +38,7 @@ func _physics_process(delta: float) -> void:
 
 	var direccion = (siguiente_punto - global_position).normalized()
 
+
 	velocity = direccion * velocidad
 
 	if velocity.length() > 0:
@@ -42,3 +48,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	area.Dañar(body)
+
+
+func _on_timer_timeout() -> void:
+	NavigationAgent.target_position = waypoints[indice_actual].global_position
