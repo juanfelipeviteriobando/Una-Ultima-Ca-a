@@ -118,6 +118,12 @@ polygon = PackedVector2Array(4, 1, 14, 16, 393.3333, 170, 446.66666, 80, 483.333
 shape = SubResource("CircleShape2D_00lfu")
 debug_color = Color(0.2508712, 0.5057017, 1, 0.41960785)
 
+[node name="Polygon2D" type="Polygon2D" parent="vision" unique_id=1194689835]
+color = Color(1, 0.12156863, 0.101960786, 0.33333334)
+
+[node name="Polygon2D2" type="Polygon2D" parent="vision" unique_id=1613935984]
+color = Color(1, 0.59607846, 0.6392157, 0.1882353)
+
 [node name="Timer2" type="Timer" parent="." unique_id=1795648827]
 wait_time = 0.5
 one_shot = true

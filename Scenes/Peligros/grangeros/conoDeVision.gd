@@ -8,8 +8,22 @@ var objetivo: Node2D = null
 var objetivoDefinitivo: Node2D = null
 var velocidadDePermiso:float=3
 var puede_detectar := false
+@onready var vision_visible := $Polygon2D
+@onready var vision_visible2:= $Polygon2D2
+@onready var shape := $Area2D2/CollisionShape2D.shape as CircleShape2D
 
+func _ready() -> void:
+	vision_visible.polygon = $Area2D2/CollisionPolygon2D.polygon
+	vision_visible2.polygon = crear_circulo(shape.radius)
+	
+func crear_circulo(radio: float, lados := 32) -> PackedVector2Array:
+	var puntos := PackedVector2Array()
 
+	for i in lados:
+		var angulo = TAU * i / lados
+		puntos.append(Vector2(cos(angulo), sin(angulo)) * radio)
+
+	return puntos
 # area cercana
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	objetivoDefinitivo = body
