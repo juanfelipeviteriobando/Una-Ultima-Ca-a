@@ -74,14 +74,14 @@ size = Vector2(12, 110)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_00lfu"]
 size = Vector2(62, 32)
 
-[node name="Podadora" type="CharacterBody2D" unique_id=1858532645 node_paths=PackedStringArray("NavigationAgent", "area")]
+[node name="Podadora" type="CharacterBody2D" unique_id=1858532645 node_paths=PackedStringArray("area", "NavigationAgent")]
 collision_layer = 3
-collision_mask = 4
+collision_mask = 0
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_nu78p")
-NavigationAgent = NodePath("NavigationAgent2D")
 area = NodePath("Area2D")
+NavigationAgent = NodePath("NavigationAgent2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=201121842]
 position = Vector2(-19.858562, 4.805625)
@@ -94,7 +94,7 @@ frame_progress = 0.893776
 collision_layer = 3
 collision_mask = 4
 script = ExtResource("2_alljl")
-"daño" = 15.0
+"daño" = 30.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=229640533]
 position = Vector2(16, 2)

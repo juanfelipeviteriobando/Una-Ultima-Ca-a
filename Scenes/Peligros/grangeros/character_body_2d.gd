@@ -31,6 +31,8 @@ var current_Index:int=0
 var wait: bool = false
 var player
 func _ready():
+	agent.avoidance_enabled = true
+	agent.radius = 10
 	player=get_tree().get_first_node_in_group("Player")
 	$Node2D/Area2D/CollisionShape2D.disabled=true
 

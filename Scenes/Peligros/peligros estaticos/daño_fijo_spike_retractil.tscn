@@ -85,7 +85,7 @@ frame_progress = 0.008397084
 [node name="Area2D" type="Area2D" parent="." unique_id=1473394248]
 collision_mask = 4
 script = ExtResource("2_ibrs3")
-"daño" = 5.0
+"daño" = 15.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=536270326]
 shape = SubResource("CircleShape2D_mng68")

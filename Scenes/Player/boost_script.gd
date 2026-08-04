@@ -17,6 +17,8 @@ func LoseBoost(LosePoint):
 	
 	if ActualBoost <= MinBoost:
 		ActualBoost = MinBoost
+	if ActualBoost >= MaxBoost:
+		ActualBoost = MaxBoost
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
