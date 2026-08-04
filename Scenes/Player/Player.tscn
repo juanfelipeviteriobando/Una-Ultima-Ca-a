@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bmajp0dnvgfs6" path="res://Scenes/Player/player.gd" id="1_ft8w5"]
 [ext_resource type="Texture2D" uid="uid://n8511amd7jpj" path="res://Sprites/Player/Caña Azucar.png" id="1_s0eop"]
+[ext_resource type="PackedScene" uid="uid://c8xx0uvi7fkbw" path="res://Scenes/UI/UITutorial.tscn" id="2_ji083"]
 [ext_resource type="Texture2D" uid="uid://cmmtl0wiv1j12" path="res://Sprites/Player/Caña Azucar marchitandose.png" id="3_fk5o5"]
 [ext_resource type="Script" uid="uid://vcxhxufa0ogy" path="res://Scenes/Player/StateMachine.gd" id="3_h54ih"]
 [ext_resource type="Script" uid="uid://dadi6s0alhsrf" path="res://Scenes/Player/variables.gd" id="4_ude3g"]
@@ -210,6 +211,8 @@ BoostScript = NodePath("BoostScript")
 animacion = NodePath("AnimatedSprite2D")
 sprite = NodePath("Sprite2D")
 
+[node name="CanvasLayer" parent="." unique_id=1662431116 instance=ExtResource("2_ji083")]
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=678682848]
 modulate = Color(0.019607844, 0.16470589, 0.023529412, 1)
 position = Vector2(-6.1154366e-05, 17.029387)
@@ -230,12 +233,14 @@ animation = &"marchitarse"
 position = Vector2(0, 13)
 shape = SubResource("CapsuleShape2D_mng68")
 
-[node name="StateMachine" type="Node" parent="." unique_id=969523827 node_paths=PackedStringArray("Player", "Animations", "WalkParticles", "variable", "BoostScript")]
+[node name="StateMachine" type="Node" parent="." unique_id=969523827 node_paths=PackedStringArray("Player", "Animations", "WalkParticles", "variable", "UI_Jugador", "UI_Tutorial", "BoostScript")]
 script = ExtResource("3_h54ih")
 Player = NodePath("..")
 Animations = NodePath("../AnimationPlayer")
 WalkParticles = NodePath("../GPUParticles2D")
 variable = NodePath("../Variables")
+UI_Jugador = NodePath("../PlayerUI")
+UI_Tutorial = NodePath("../CanvasLayer")
 BoostScript = NodePath("../BoostScript")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1778744295]
@@ -254,6 +259,7 @@ script = ExtResource("5_jmcll")
 ActualBoost = 100.0
 
 [node name="PlayerUI" parent="." unique_id=1754467272 node_paths=PackedStringArray("BoostScript", "Player") instance=ExtResource("6_4wape")]
+visible = false
 BoostScript = NodePath("../BoostScript")
 Player = NodePath("..")
 

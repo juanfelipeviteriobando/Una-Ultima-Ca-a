@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://c8xx0uvi7fkbw"]
+
+[ext_resource type="FontFile" uid="uid://gclnrsdoupre" path="res://Font/PressStart2P.ttf" id="1_41o8r"]
+[ext_resource type="Texture2D" uid="uid://cqgyo4vspaa3t" path="res://Sprites/UI o Objetos/Azucar.png" id="2_6vq24"]
+[ext_resource type="Texture2D" uid="uid://betwj4bh6t2n1" path="res://Sprites/UI o Objetos/Water.png" id="3_7o87j"]
+[ext_resource type="Texture2D" uid="uid://seee0lyiotwy" path="res://Sprites/kb_dark_all.png" id="4_7o87j"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_82v0y"]
+font = ExtResource("1_41o8r")
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1662431116]
+
+[node name="Control" type="Control" parent="." unique_id=573360889]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=786779812]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.61960787)
+
+[node name="Label" type="Label" parent="Control" unique_id=1423960245]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -192.0
+offset_bottom = 35.0
+grow_horizontal = 0
+text = "Move = 
+
+Dash = 
+
+Azucar = Movimiento
+
+Agua = Mejoras"
+label_settings = SubResource("LabelSettings_82v0y")
+
+[node name="Sprite2D" type="Sprite2D" parent="Control" unique_id=1646059087]
+position = Vector2(320, 76)
+scale = Vector2(2, 2)
+texture = ExtResource("2_6vq24")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Control" unique_id=1072112965]
+position = Vector2(320, 116)
+scale = Vector2(2, 2)
+texture = ExtResource("3_7o87j")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Control" unique_id=537454812]
+position = Vector2(474, 13)
+scale = Vector2(2, 2)
+texture = ExtResource("4_7o87j")
+hframes = 16
+vframes = 26
+
+[node name="Sprite2D4" type="Sprite2D" parent="Control" unique_id=1023900418]
+position = Vector2(511, 13)
+scale = Vector2(2, 2)
+texture = ExtResource("4_7o87j")
+hframes = 16
+vframes = 26
+frame = 48
+
+[node name="Sprite2D5" type="Sprite2D" parent="Control" unique_id=1531277832]
+position = Vector2(494, 13)
+scale = Vector2(2, 2)
+texture = ExtResource("4_7o87j")
+hframes = 16
+vframes = 26
+frame = 288
+
+[node name="Sprite2D6" type="Sprite2D" parent="Control" unique_id=1526955178]
+position = Vector2(454, 13)
+scale = Vector2(2, 2)
+texture = ExtResource("4_7o87j")
+hframes = 16
+vframes = 26
+frame = 352
+
+[node name="Sprite2D7" type="Sprite2D" parent="Control" unique_id=524056476]
+position = Vector2(456, 46)
+scale = Vector2(2, 2)
+texture = ExtResource("4_7o87j")
+hframes = 16
+vframes = 26
+frame = 136
