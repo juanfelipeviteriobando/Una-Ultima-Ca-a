@@ -5,7 +5,7 @@ extends Control
 
 @export var MusicRepeat: AudioStreamOggVorbis
 # Ruta de la escena del juego
-@export var escena_juego: String = "res://Scenes/GameScenes/test.tscn"
+@export var escena_juego: String = "res://Scenes/NIVEL/Nivel.tscn"
 
 func _ready() -> void:
 	BUTTONINICIO.pressed.connect(_on_button_inicio_pressed)

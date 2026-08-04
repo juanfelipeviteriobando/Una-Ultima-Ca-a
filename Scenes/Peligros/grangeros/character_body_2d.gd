@@ -101,7 +101,9 @@ func _physics_process(delta: float) -> void:
 			$Timer2.stop()
 		if current_Index>=waypoints.size():
 			current_Index=0
-		
+		if waypoints.size() <=0:
+				return
+		agent.target_position=waypoints[current_Index].global_position
 	
 	var direction=agent.get_next_path_position()-global_position
 

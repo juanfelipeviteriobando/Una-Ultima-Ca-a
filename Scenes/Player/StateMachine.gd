@@ -60,7 +60,10 @@ func Dashcooldown():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	if BoostScript.ActualBoost <= BoostScript.MinBoost:
-		Granjero.persigueJugador = true
+		var GranjeroMasCercano = obtener_granjero_mas_cercano()
+		
+		if GranjeroMasCercano:
+			GranjeroMasCercano.persigueJugador = true
 		var MusicTween1 = create_tween()
 		var MusicTween2 = create_tween()
 		MusicTween1.tween_property(Player.LevelMusic, "volume_db", -80.0, 0.5)
@@ -82,7 +85,23 @@ func _physics_process(delta: float) -> void:
 		STATE.Dash:
 			estado_Dash(delta)
 
+func obtener_granjero_mas_cercano():
+	var granjeros = get_tree().get_nodes_in_group("Enemigo")
 
+	if granjeros.is_empty():
+		return null
+
+	var mas_cercano = null
+	var menor_distancia = INF
+
+	for granjero in granjeros:
+		var distancia = Player.global_position.distance_to(granjero.global_position)
+
+		if distancia < menor_distancia:
+			menor_distancia = distancia
+			mas_cercano = granjero
+
+	return mas_cercano
 func estado_Idle(delta: float) -> void:
 	WalkParticles.emitting = false
 	Animations.play("Idle")
