@@ -65,6 +65,8 @@ func _physics_process(delta: float) -> void:
 	Input_Dir = Input.get_vector("A", "D", "W", "S").normalized()
 	if Input.is_action_just_pressed("Dash"):
 		dash.emit()
+	if Input.is_action_just_pressed("Salir"):
+		get_tree().quit()
 	move_and_slide()
 
 func morir():
