@@ -13,7 +13,7 @@ config_version=5
 config/name="Una Ultima Caña"
 run/main_scene="uid://bded2f7srro5e"
 config/features=PackedStringArray("4.7", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://dvhqvlyg8a2mx"
 
 [autoload]
 
