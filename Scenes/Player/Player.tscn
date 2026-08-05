@@ -256,6 +256,7 @@ script = ExtResource("5_t26db")
 
 [node name="BoostScript" type="Node" parent="." unique_id=360350717]
 script = ExtResource("5_jmcll")
+MaxBoost = 150.0
 ActualBoost = 100.0
 
 [node name="PlayerUI" parent="." unique_id=1754467272 node_paths=PackedStringArray("BoostScript", "Player") instance=ExtResource("6_4wape")]

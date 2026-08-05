@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://c0ket5o1e6h5y" path="res://Scenes/Peligros/peligros estaticos/daño_fijo_spike_retractil.tscn" id="12_iopa0"]
 [ext_resource type="PackedScene" uid="uid://dpstfj5q4eaqq" path="res://Scenes/Objects/Sugar.tscn" id="13_iopa0"]
 [ext_resource type="Texture2D" uid="uid://d2fowi11td6pe" path="res://Sprites/Player/Caña Azucar grupo.png" id="14_m3d6s"]
+[ext_resource type="Texture2D" uid="uid://cpkvb7oi7pbyg" path="res://Sprites/UI o Objetos/objetos/rock.png" id="15_rbsd7"]
+[ext_resource type="Script" uid="uid://ceplypuxvuki6" path="res://Scenes/GameScenes/destructible.gd" id="16_vel7o"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_7vjts"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -270,6 +272,8 @@ sources/0 = SubResource("TileSetAtlasSource_vel7o")
 [sub_resource type="Resource" id="Resource_ljfdq"]
 script = ExtResource("7_rdgv7")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_01jfn"]
+
 [node name="NivelCarrera" type="Node2D" unique_id=601089304]
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=1907142111]
@@ -278,7 +282,7 @@ tile_map_data = PackedByteArray("AAD9/+r/AAAGAAEAAAD9/+v/AAAGAAEAAAD9/+z/AAAGAAE
 tile_set = SubResource("TileSet_tg5sr")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1249663622]
-tile_map_data = PackedByteArray("AAAAAAkAAAADAAYAAAAAAAoAAAADAAYAAAAAAAsAAAADAAYAAAAAAAwAAAADAAYAAAAAAA0AAAADAAYAAAAAAA4AAAADAAYAAAAAAA8AAAADAAYAAAAAABAAAAADAAYAAAAAABEAAAADAAYAAAAAABIAAAADAAYAAAAAABMAAAADAAYAAAAAABQAAAADAAYAAAAAABUAAAADAAYAAAAAABYAAAADAAYAAAAAABcAAAADAAYAAAAAABgAAAADAAYAAAAAABkAAAADAAYAAAAAABoAAAADAAYAAAAAABsAAAADAAYAAAAAABwAAAADAAYAAAAAAB0AAAADAAYAAAAAAB4AAAADAAYAAAAAAB8AAAADAAYAAAAAACAAAAADAAYAAAAAACEAAAADAAYAAAAAACIAAAADAAYAAAAAACMAAAADAAYAAAAAACQAAAADAAYAAAAAACUAAAADAAYAAAAAACYAAAADAAYAAAAAACcAAAADAAYAAAAAACgAAAADAAYAAAAAACkAAAADAAYAAAAAACoAAAADAAYAAAAAACsAAAADAAYAAAAAACwAAAADAAYAAAAAAC0AAAADAAYAAAAAAC4AAAADAAYAAAAAAC8AAAADAAYAAAAAADAAAAADAAYAAAAAADEAAAADAAcAAAAAAPr/AAADAAYAAAAAAPv/AAADAAYAAAAAAPz/AAADAAYAAAAAAP3/AAADAAYAAAAAAP7/AAADAAYAAAAAAP//AAADAAYAAAAAAAAAAAADAAYAAAAAAAEAAAADAAYAAAAAAAIAAAADAAYAAAAAAAMAAAADAAYAAAAAAAQAAAADAAYAAAAAAAUAAAADAAYAAAAAAAYAAAADAAYAAAAAAAcAAAADAAYAAAAAAAgAAAADAAYAAAAAAO3/AAADAAYAAAAAAO7/AAADAAYAAAAAAO//AAADAAYAAAAAAPD/AAADAAYAAAAAAPH/AAADAAYAAAAAAPL/AAADAAYAAAAAAPP/AAADAAYAAAAAAPT/AAADAAYAAAAAAPX/AAADAAYAAAAAAPb/AAADAAYAAAAAAPf/AAADAAYAAAAAAPj/AAADAAYAAAAAAPn/AAADAAYAAAAAAM7/AAADAAYAAAAAAM//AAADAAYAAAAAAND/AAADAAYAAAAAANH/AAADAAYAAAAAANL/AAADAAYAAAAAANP/AAADAAYAAAAAANT/AAADAAYAAAAAANX/AAADAAYAAAAAANb/AAADAAYAAAAAANf/AAADAAYAAAAAANj/AAADAAYAAAAAANn/AAADAAYAAAAAANr/AAADAAYAAAAAANv/AAADAAYAAAAAANz/AAADAAYAAAAAAN3/AAADAAYAAAAAAN7/AAADAAYAAAAAAN//AAADAAYAAAAAAOD/AAADAAYAAAAAAOH/AAADAAYAAAAAAOL/AAADAAYAAAAAAOP/AAADAAYAAAAAAOT/AAADAAYAAAAAAOX/AAADAAYAAAAAAOb/AAADAAYAAAAAAOf/AAADAAYAAAAAAOj/AAADAAYAAAAAAOn/AAADAAYAAAAAAOr/AAADAAYAAAAAAOv/AAADAAYAAAAAAOz/AAADAAYAAAAAALf/AAADAAYAAAAAALj/AAADAAYAAAAAALn/AAADAAYAAAAAALr/AAADAAYAAAAAALv/AAADAAYAAAAAALz/AAADAAYAAAAAAL3/AAADAAYAAAAAAL7/AAADAAYAAAAAAL//AAADAAYAAAAAAMD/AAADAAYAAAAAAMH/AAADAAYAAAAAAML/AAADAAYAAAAAAMP/AAADAAYAAAAAAMT/AAADAAYAAAAAAMX/AAADAAYAAAAAAMb/AAADAAYAAAAAAMf/AAADAAYAAAAAAMj/AAADAAYAAAAAAMn/AAADAAYAAAAAAMr/AAADAAYAAAAAAMv/AAADAAYAAAAAAMz/AAADAAYAAAAAAM3/AAADAAYAAAAnAB0AAAAFAAYAAAAnAB4AAAAFAAYAAAAnAB8AAAAFAAYAAAAnACAAAAAFAAYAAAAnACEAAAAFAAYAAAAnACIAAAAFAAYAAAAnACMAAAAFAAYAAAAnACQAAAAFAAYAAAAnACUAAAAFAAYAAAAnACYAAAAFAAYAAAAnACcAAAAFAAYAAAAnACgAAAAFAAYAAAAnACkAAAAFAAYAAAAnACoAAAAFAAYAAAAnACsAAAAFAAYAAAAnACwAAAAFAAYAAAAnAC0AAAAFAAYAAAAnAC4AAAAFAAYAAAAnAC8AAAAFAAYAAAAnADAAAAAFAAYAAAAnADEAAAAFAAcAAAAnAAMAAAAFAAYAAAAnAAQAAAAFAAYAAAAnAAUAAAAFAAYAAAAnAAYAAAAFAAYAAAAnAAcAAAAFAAYAAAAnAAgAAAAFAAYAAAAnAAkAAAAFAAYAAAAnAAoAAAAFAAYAAAAnAAsAAAAFAAYAAAAnAAwAAAAFAAYAAAAnAA0AAAAFAAYAAAAnAA4AAAAFAAYAAAAnAA8AAAAFAAYAAAAnABAAAAAFAAYAAAAnABEAAAAFAAYAAAAnABIAAAAFAAYAAAAnABMAAAAFAAYAAAAnABQAAAAFAAYAAAAnABUAAAAFAAYAAAAnABYAAAAFAAYAAAAnABcAAAAFAAYAAAAnABgAAAAFAAYAAAAnABkAAAAFAAYAAAAnABoAAAAFAAYAAAAnABsAAAAFAAYAAAAnABwAAAAFAAYAAAAnAN//AAAFAAYAAAAnAOD/AAAFAAYAAAAnAOH/AAAFAAYAAAAnAOL/AAAFAAYAAAAnAOP/AAAFAAYAAAAnAOT/AAAFAAYAAAAnAOX/AAAFAAYAAAAnAOb/AAAFAAYAAAAnAOf/AAAFAAYAAAAnAOj/AAAFAAYAAAAnAOn/AAAFAAYAAAAnAOr/AAAFAAYAAAAnAOv/AAAFAAYAAAAnAOz/AAAFAAYAAAAnAO3/AAAFAAYAAAAnAO7/AAAFAAYAAAAnAO//AAAFAAYAAAAnAPD/AAAFAAYAAAAnAPH/AAAFAAYAAAAnAPL/AAAFAAYAAAAnAPP/AAAFAAYAAAAnAPT/AAAFAAYAAAAnAPX/AAAFAAYAAAAnAPb/AAAFAAYAAAAnAPf/AAAFAAYAAAAnAPj/AAAFAAYAAAAnAPn/AAAFAAYAAAAnAPr/AAAFAAYAAAAnAPv/AAAFAAYAAAAnAPz/AAAFAAYAAAAnAP3/AAAFAAYAAAAnAP7/AAAFAAYAAAAnAP//AAAFAAYAAAAnAAAAAAAFAAYAAAAnAAEAAAAFAAYAAAAnAAIAAAAFAAYAAAAnAML/AAAFAAYAAAAnAMP/AAAFAAYAAAAnAMT/AAAFAAYAAAAnAMX/AAAFAAYAAAAnAMb/AAAFAAYAAAAnAMf/AAAFAAYAAAAnAMj/AAAFAAYAAAAnAMn/AAAFAAYAAAAnAMr/AAAFAAYAAAAnAMv/AAAFAAYAAAAnAMz/AAAFAAYAAAAnAM3/AAAFAAYAAAAnAM7/AAAFAAYAAAAnAM//AAAFAAYAAAAnAND/AAAFAAYAAAAnANH/AAAFAAYAAAAnANL/AAAFAAYAAAAnANP/AAAFAAYAAAAnANT/AAAFAAYAAAAnANX/AAAFAAYAAAAnANb/AAAFAAYAAAAnANf/AAAFAAYAAAAnANj/AAAFAAYAAAAnANn/AAAFAAYAAAAnANr/AAAFAAYAAAAnANv/AAAFAAYAAAAnANz/AAAFAAYAAAAnAN3/AAAFAAYAAAAnAN7/AAAFAAYAAAAnALf/AAAFAAYAAAAnALj/AAAFAAYAAAAnALn/AAAFAAYAAAAnALr/AAAFAAYAAAAnALv/AAAFAAYAAAAnALz/AAAFAAYAAAAnAL3/AAAFAAYAAAAnAL7/AAAFAAYAAAAnAL//AAAFAAYAAAAnAMD/AAAFAAYAAAAnAMH/AAAFAAYAAAABADEAAAAEAAcAAAACADEAAAAEAAcAAAADADEAAAAEAAcAAAAEADEAAAAEAAcAAAAFADEAAAAEAAcAAAAGADEAAAAEAAcAAAAHADEAAAAEAAcAAAAIADEAAAAEAAcAAAAJADEAAAAEAAcAAAAKADEAAAAEAAcAAAALADEAAAAEAAcAAAAMADEAAAAEAAcAAAANADEAAAAEAAcAAAAOADEAAAAEAAcAAAAPADEAAAAEAAcAAAAQADEAAAAEAAcAAAARADEAAAAEAAcAAAASADEAAAAEAAcAAAATADEAAAAEAAcAAAAUADEAAAAEAAcAAAAVADEAAAAEAAcAAAAWADEAAAAEAAcAAAAXADEAAAAEAAcAAAAYADEAAAAEAAcAAAAZADEAAAAEAAcAAAAaADEAAAAEAAcAAAAbADEAAAAEAAcAAAAcADEAAAAEAAcAAAAdADEAAAAEAAcAAAAeADEAAAAEAAcAAAAfADEAAAAEAAcAAAAgADEAAAAEAAcAAAAhADEAAAAEAAcAAAAiADEAAAAEAAcAAAAjADEAAAAEAAcAAAAkADEAAAAEAAcAAAAlADEAAAAEAAcAAAAmADEAAAAEAAcAAAA=")
+tile_map_data = PackedByteArray("AAAAAAkAAAADAAYAAAAAAAoAAAADAAYAAAAAAAsAAAADAAYAAAAAAAwAAAADAAYAAAAAAA0AAAADAAYAAAAAAA4AAAADAAYAAAAAAA8AAAADAAYAAAAAABAAAAADAAYAAAAAABEAAAADAAYAAAAAABIAAAADAAYAAAAAABMAAAADAAYAAAAAABQAAAADAAYAAAAAABUAAAADAAYAAAAAABYAAAADAAYAAAAAABcAAAADAAYAAAAAABgAAAADAAYAAAAAABkAAAADAAYAAAAAABoAAAADAAYAAAAAABsAAAADAAYAAAAAABwAAAADAAYAAAAAAB0AAAADAAYAAAAAAB4AAAADAAYAAAAAAB8AAAADAAYAAAAAACAAAAADAAYAAAAAACEAAAADAAYAAAAAACIAAAADAAYAAAAAACMAAAADAAYAAAAAACQAAAADAAYAAAAAACUAAAADAAYAAAAAACYAAAADAAYAAAAAACcAAAADAAYAAAAAACgAAAADAAYAAAAAACkAAAADAAYAAAAAACoAAAADAAYAAAAAACsAAAADAAYAAAAAACwAAAADAAYAAAAAAC0AAAADAAYAAAAAAC4AAAADAAYAAAAAAC8AAAADAAYAAAAAADAAAAADAAYAAAAAADEAAAADAAcAAAAAAPr/AAADAAYAAAAAAPv/AAADAAYAAAAAAPz/AAADAAYAAAAAAP3/AAADAAYAAAAAAP7/AAADAAYAAAAAAP//AAADAAYAAAAAAAAAAAADAAYAAAAAAAEAAAADAAYAAAAAAAIAAAADAAYAAAAAAAMAAAADAAYAAAAAAAQAAAADAAYAAAAAAAUAAAADAAYAAAAAAAYAAAADAAYAAAAAAAcAAAADAAYAAAAAAAgAAAADAAYAAAAAAO3/AAADAAYAAAAAAO7/AAADAAYAAAAAAO//AAADAAYAAAAAAPD/AAADAAYAAAAAAPH/AAADAAYAAAAAAPL/AAADAAYAAAAAAPP/AAADAAYAAAAAAPT/AAADAAYAAAAAAPX/AAADAAYAAAAAAPb/AAADAAYAAAAAAPf/AAADAAYAAAAAAPj/AAADAAYAAAAAAPn/AAADAAYAAAAAAM7/AAADAAYAAAAAAM//AAADAAYAAAAAAND/AAADAAYAAAAAANH/AAADAAYAAAAAANL/AAADAAYAAAAAANP/AAADAAYAAAAAANT/AAADAAYAAAAAANX/AAADAAYAAAAAANb/AAADAAYAAAAAANf/AAADAAYAAAAAANj/AAADAAYAAAAAANn/AAADAAYAAAAAANr/AAADAAYAAAAAANv/AAADAAYAAAAAANz/AAADAAYAAAAAAN3/AAADAAYAAAAAAN7/AAADAAYAAAAAAN//AAADAAYAAAAAAOD/AAADAAYAAAAAAOH/AAADAAYAAAAAAOL/AAADAAYAAAAAAOP/AAADAAYAAAAAAOT/AAADAAYAAAAAAOX/AAADAAYAAAAAAOb/AAADAAYAAAAAAOf/AAADAAYAAAAAAOj/AAADAAYAAAAAAOn/AAADAAYAAAAAAOr/AAADAAYAAAAAAOv/AAADAAYAAAAAAOz/AAADAAYAAAAAALf/AAADAAYAAAAAALj/AAADAAYAAAAAALn/AAADAAYAAAAAALr/AAADAAYAAAAAALv/AAADAAYAAAAAALz/AAADAAYAAAAAAL3/AAADAAYAAAAAAL7/AAADAAYAAAAAAL//AAADAAYAAAAAAMD/AAADAAYAAAAAAMH/AAADAAYAAAAAAML/AAADAAYAAAAAAMP/AAADAAYAAAAAAMT/AAADAAYAAAAAAMX/AAADAAYAAAAAAMb/AAADAAYAAAAAAMf/AAADAAYAAAAAAMj/AAADAAYAAAAAAMn/AAADAAYAAAAAAMr/AAADAAYAAAAAAMv/AAADAAYAAAAAAMz/AAADAAYAAAAAAM3/AAADAAYAAAAnAB0AAAAFAAYAAAAnAB4AAAAFAAYAAAAnAB8AAAAFAAYAAAAnACAAAAAFAAYAAAAnACEAAAAFAAYAAAAnACIAAAAFAAYAAAAnACMAAAAFAAYAAAAnACQAAAAFAAYAAAAnACUAAAAFAAYAAAAnACYAAAAFAAYAAAAnACcAAAAFAAYAAAAnACgAAAAFAAYAAAAnACkAAAAFAAYAAAAnACoAAAAFAAYAAAAnACsAAAAFAAYAAAAnACwAAAAFAAYAAAAnAC0AAAAFAAYAAAAnAC4AAAAFAAYAAAAnAC8AAAAFAAYAAAAnADAAAAAFAAYAAAAnADEAAAAFAAcAAAAnAAMAAAAFAAYAAAAnAAQAAAAFAAYAAAAnAAUAAAAFAAYAAAAnAAYAAAAFAAYAAAAnAAcAAAAFAAYAAAAnAAgAAAAFAAYAAAAnAAkAAAAFAAYAAAAnAAoAAAAFAAYAAAAnAAsAAAAFAAYAAAAnAAwAAAAFAAYAAAAnAA0AAAAFAAYAAAAnAA4AAAAFAAYAAAAnAA8AAAAFAAYAAAAnABAAAAAFAAYAAAAnABEAAAAFAAYAAAAnABIAAAAFAAYAAAAnABMAAAAFAAYAAAAnABQAAAAFAAYAAAAnABUAAAAFAAYAAAAnABYAAAAFAAYAAAAnABcAAAAFAAYAAAAnABgAAAAFAAYAAAAnABkAAAAFAAYAAAAnABoAAAAFAAYAAAAnABsAAAAFAAYAAAAnABwAAAAFAAYAAAAnAN//AAAFAAYAAAAnAOD/AAAFAAYAAAAnAOH/AAAFAAYAAAAnAOL/AAAFAAYAAAAnAOP/AAAFAAYAAAAnAOT/AAAFAAYAAAAnAOX/AAAFAAYAAAAnAOb/AAAFAAYAAAAnAOf/AAAFAAYAAAAnAOj/AAAFAAYAAAAnAOn/AAAFAAYAAAAnAOr/AAAFAAYAAAAnAOv/AAAFAAYAAAAnAOz/AAAFAAYAAAAnAO3/AAAFAAYAAAAnAO7/AAAFAAYAAAAnAO//AAAFAAYAAAAnAPD/AAAFAAYAAAAnAPH/AAAFAAYAAAAnAPL/AAAFAAYAAAAnAPP/AAAFAAYAAAAnAPT/AAAFAAYAAAAnAPX/AAAFAAYAAAAnAPb/AAAFAAYAAAAnAPf/AAAFAAYAAAAnAPj/AAAFAAYAAAAnAPn/AAAFAAYAAAAnAPr/AAAFAAYAAAAnAPv/AAAFAAYAAAAnAPz/AAAFAAYAAAAnAP3/AAAFAAYAAAAnAP7/AAAFAAYAAAAnAP//AAAFAAYAAAAnAAAAAAAFAAYAAAAnAAEAAAAFAAYAAAAnAAIAAAAFAAYAAAAnAML/AAAFAAYAAAAnAMP/AAAFAAYAAAAnAMT/AAAFAAYAAAAnAMX/AAAFAAYAAAAnAMb/AAAFAAYAAAAnAMf/AAAFAAYAAAAnAMj/AAAFAAYAAAAnAMn/AAAFAAYAAAAnAMr/AAAFAAYAAAAnAMv/AAAFAAYAAAAnAMz/AAAFAAYAAAAnAM3/AAAFAAYAAAAnAM7/AAAFAAYAAAAnAM//AAAFAAYAAAAnAND/AAAFAAYAAAAnANH/AAAFAAYAAAAnANL/AAAFAAYAAAAnANP/AAAFAAYAAAAnANT/AAAFAAYAAAAnANX/AAAFAAYAAAAnANb/AAAFAAYAAAAnANf/AAAFAAYAAAAnANj/AAAFAAYAAAAnANn/AAAFAAYAAAAnANr/AAAFAAYAAAAnANv/AAAFAAYAAAAnANz/AAAFAAYAAAAnAN3/AAAFAAYAAAAnAN7/AAAFAAYAAAAnALf/AAAFAAYAAAAnALj/AAAFAAYAAAAnALn/AAAFAAYAAAAnALr/AAAFAAYAAAAnALv/AAAFAAYAAAAnALz/AAAFAAYAAAAnAL3/AAAFAAYAAAAnAL7/AAAFAAYAAAAnAL//AAAFAAYAAAAnAMD/AAAFAAYAAAAnAMH/AAAFAAYAAAABADEAAAAEAAcAAAACADEAAAAEAAcAAAADADEAAAAEAAcAAAAEADEAAAAEAAcAAAAFADEAAAAEAAcAAAAGADEAAAAEAAcAAAAHADEAAAAEAAcAAAAIADEAAAAEAAcAAAAJADEAAAAEAAcAAAAKADEAAAAEAAcAAAALADEAAAAEAAcAAAAMADEAAAAEAAcAAAANADEAAAAEAAcAAAAOADEAAAAEAAcAAAAPADEAAAAEAAcAAAAQADEAAAAEAAcAAAARADEAAAAEAAcAAAASADEAAAAEAAcAAAATADEAAAAEAAcAAAAUADEAAAAEAAcAAAAVADEAAAAEAAcAAAAWADEAAAAEAAcAAAAXADEAAAAEAAcAAAAYADEAAAAEAAcAAAAZADEAAAAEAAcAAAAaADEAAAAEAAcAAAAbADEAAAAEAAcAAAAcADEAAAAEAAcAAAAdADEAAAAEAAcAAAAeADEAAAAEAAcAAAAfADEAAAAEAAcAAAAgADEAAAAEAAcAAAAhADEAAAAEAAcAAAAiADEAAAAEAAcAAAAjADEAAAAEAAcAAAAkADEAAAAEAAcAAAAlADEAAAAEAAcAAAAmADEAAAAEAAcAAAAAALb/AAADAAYAAAAAALX/AAADAAYAAAAAALT/AAADAAYAAAAAALP/AAADAAYAAAAAALL/AAADAAYAAAAAALH/AAADAAYAAAAAALD/AAADAAYAAAAAAK//AAADAAYAAAAAAK7/AAADAAYAAAAAAK3/AAADAAYAAAAAAKz/AAADAAYAAAAAAKv/AAADAAYAAAAAAKr/AAADAAYAAAAAAKn/AAADAAYAAAAAAKj/AAADAAYAAAAAAKf/AAADAAYAAAAAAKb/AAADAAYAAAAAAKX/AAADAAYAAAAAAKT/AAADAAYAAAAAAKP/AAADAAYAAAAAAKL/AAADAAYAAAAAAKH/AAADAAYAAAAAAKD/AAADAAYAAAAAAJ//AAADAAYAAAAAAJ7/AAADAAYAAAAAAJ3/AAADAAYAAAAAAJz/AAADAAYAAAAAAJv/AAADAAYAAAAAAJr/AAADAAYAAAAAAJn/AAADAAYAAAAAAJj/AAADAAYAAAAAAJf/AAADAAYAAAAAAJb/AAADAAYAAAAAAJX/AAADAAYAAAAAAJT/AAADAAYAAAAAAJP/AAADAAYAAAAAAJL/AAADAAYAAAAAAJH/AAADAAYAAAAAAJD/AAADAAYAAAAAAI7/AAADAAYAAAAAAI3/AAADAAYAAAAAAIz/AAADAAYAAAAAAIv/AAADAAYAAAAAAIr/AAADAAYAAAAAAIn/AAADAAYAAAAAAIj/AAADAAYAAAAAAIf/AAADAAYAAAAAAIb/AAADAAYAAAAAAIX/AAADAAYAAAAAAIT/AAADAAYAAAAAAIP/AAADAAYAAAAAAIL/AAADAAYAAAAAAIH/AAADAAYAAAAAAI//AAADAAYAAAAnALb/AAAFAAYAAAAnALX/AAAFAAYAAAAnALT/AAAFAAYAAAAnALP/AAAFAAYAAAAnALL/AAAFAAYAAAAnALH/AAAFAAYAAAAnALD/AAAFAAYAAAAnAK//AAAFAAYAAAAnAK7/AAAFAAYAAAAnAK3/AAAFAAYAAAAnAKz/AAAFAAYAAAAnAKv/AAAFAAYAAAAnAKr/AAAFAAYAAAAnAKn/AAAFAAYAAAAnAKj/AAAFAAYAAAAnAKf/AAAFAAYAAAAnAKb/AAAFAAYAAAAnAKX/AAAFAAYAAAAnAKT/AAAFAAYAAAAnAKP/AAAFAAYAAAAnAKL/AAAFAAYAAAAnAKH/AAAFAAYAAAAnAKD/AAAFAAYAAAAnAJ//AAAFAAYAAAAnAJ7/AAAFAAYAAAAnAJ3/AAAFAAYAAAAnAJz/AAAFAAYAAAAnAJv/AAAFAAYAAAAnAJr/AAAFAAYAAAAnAJn/AAAFAAYAAAAnAJj/AAAFAAYAAAAnAJf/AAAFAAYAAAAnAJb/AAAFAAYAAAAnAJX/AAAFAAYAAAAnAJT/AAAFAAYAAAAnAJP/AAAFAAYAAAAnAJL/AAAFAAYAAAAnAJH/AAAFAAYAAAAnAJD/AAAFAAYAAAAnAI//AAAFAAYAAAAnAI7/AAAFAAYAAAAnAI3/AAAFAAYAAAAnAIz/AAAFAAYAAAAnAIv/AAAFAAYAAAAnAIr/AAAFAAYAAAAnAIn/AAAFAAYAAAAnAIj/AAAFAAYAAAAnAIf/AAAFAAYAAAAnAIb/AAAFAAYAAAAnAIX/AAAFAAYAAAAnAIT/AAAFAAYAAAAnAIP/AAAFAAYAAAAnAIL/AAAFAAYAAAAnAIH/AAAFAAYAAAA=")
 tile_set = ExtResource("2_bvxa4")
 
 [node name="Podadora" parent="." unique_id=1858532645 node_paths=PackedStringArray("waypoints") instance=ExtResource("3_cljtj")]
@@ -314,7 +318,7 @@ position = Vector2(83, -967)
 position = Vector2(537, -933)
 
 [node name="Player" parent="." unique_id=1763163025 instance=ExtResource("4_tg5sr")]
-position = Vector2(315, 285)
+position = Vector2(318, 277)
 
 [node name="Label2" type="Label" parent="." unique_id=114301080]
 offset_left = 172.0
@@ -364,7 +368,7 @@ tile_set = SubResource("TileSet_01jfn")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=849582121]
 physics_interpolation_mode = 1
 top_level = true
-position = Vector2(315, 285)
+position = Vector2(318, 277)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=2004606763]
 process_priority = 300
@@ -374,7 +378,7 @@ metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=1303705519 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(315, 285)
+position = Vector2(318, 277)
 script = ExtResource("6_ae82e")
 priority = 5
 follow_mode = 2
@@ -384,10 +388,9 @@ follow_damping = true
 follow_damping_value = Vector2(0.6, 0.6)
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 
-[node name="Granjero" parent="." unique_id=2116185681 node_paths=PackedStringArray("waypoints", "LevelMusic") instance=ExtResource("9_ljfdq")]
+[node name="Granjero" parent="." unique_id=2116185681 node_paths=PackedStringArray("waypoints") instance=ExtResource("9_ljfdq")]
 position = Vector2(91, -909)
 waypoints = [NodePath("../Waypoint/Marker2D2"), NodePath("../Waypoint/Marker2D3"), NodePath("../Waypoint/Marker2D4")]
-LevelMusic = NodePath("")
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=27898123]
 stream = ExtResource("10_8b8gp")
@@ -443,6 +446,232 @@ grande = Vector2(5, 5)
 [node name="daño fijo spike retractil7" parent="Daños" unique_id=1073612819 instance=ExtResource("12_iopa0")]
 position = Vector2(557, -1345)
 grande = Vector2(5, 5)
+
+[node name="Node2D" type="Node2D" parent="Daños" unique_id=1735356586]
+
+[node name="Zanga(No escenear)4" type="Node2D" parent="Daños/Node2D" unique_id=1382357157]
+position = Vector2(17, -1590)
+
+[node name="Rock" type="Sprite2D" parent="Daños/Node2D/Zanga(No escenear)4" unique_id=188713980]
+position = Vector2(8, 8)
+texture = ExtResource("15_rbsd7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Daños/Node2D/Zanga(No escenear)4" unique_id=206071805]
+script = ExtResource("16_vel7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Daños/Node2D/Zanga(No escenear)4/StaticBody2D" unique_id=595156926]
+shape = SubResource("RectangleShape2D_01jfn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Daños/Node2D/Zanga(No escenear)4/StaticBody2D" unique_id=1606655917]
+polygon = PackedVector2Array(5, -17, 15, -9, 29, 21, 26, 28, 17, 30, 10, 27, -1, 29, -10, 31, -15, 25, -20, 19, -16, 11, -14, 4, -10, -4, -3, -10, 2, -15)
+
+[node name="Zanga(No escenear)5" type="Node2D" parent="Daños/Node2D" unique_id=356987329]
+position = Vector2(68, -1590)
+
+[node name="Rock" type="Sprite2D" parent="Daños/Node2D/Zanga(No escenear)5" unique_id=1541149218]
+position = Vector2(8, 8)
+texture = ExtResource("15_rbsd7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Daños/Node2D/Zanga(No escenear)5" unique_id=1623755792]
+script = ExtResource("16_vel7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Daños/Node2D/Zanga(No escenear)5/StaticBody2D" unique_id=1079121442]
+shape = SubResource("RectangleShape2D_01jfn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Daños/Node2D/Zanga(No escenear)5/StaticBody2D" unique_id=1847270467]
+polygon = PackedVector2Array(5, -17, 15, -9, 29, 21, 26, 28, 17, 30, 10, 27, -1, 29, -10, 31, -15, 25, -20, 19, -16, 11, -14, 4, -10, -4, -3, -10, 2, -15)
+
+[node name="Zanga(No escenear)6" type="Node2D" parent="Daños/Node2D" unique_id=2022452305]
+position = Vector2(118, -1588)
+
+[node name="Rock" type="Sprite2D" parent="Daños/Node2D/Zanga(No escenear)6" unique_id=66151607]
+position = Vector2(8, 8)
+texture = ExtResource("15_rbsd7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Daños/Node2D/Zanga(No escenear)6" unique_id=1087912083]
+script = ExtResource("16_vel7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Daños/Node2D/Zanga(No escenear)6/StaticBody2D" unique_id=908095208]
+shape = SubResource("RectangleShape2D_01jfn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Daños/Node2D/Zanga(No escenear)6/StaticBody2D" unique_id=55797118]
+polygon = PackedVector2Array(5, -17, 15, -9, 29, 21, 26, 28, 17, 30, 10, 27, -1, 29, -10, 31, -15, 25, -20, 19, -16, 11, -14, 4, -10, -4, -3, -10, 2, -15)
+
+[node name="Zanga(No escenear)7" type="Node2D" parent="Daños/Node2D" unique_id=1385472871]
+position = Vector2(169, -1588)
+
+[node name="Rock" type="Sprite2D" parent="Daños/Node2D/Zanga(No escenear)7" unique_id=798406403]
+position = Vector2(8, 8)
+texture = ExtResource("15_rbsd7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Daños/Node2D/Zanga(No escenear)7" unique_id=1218763695]
+script = ExtResource("16_vel7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Daños/Node2D/Zanga(No escenear)7/StaticBody2D" unique_id=1189998347]
+shape = SubResource("RectangleShape2D_01jfn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Daños/Node2D/Zanga(No escenear)7/StaticBody2D" unique_id=448111918]
+polygon = PackedVector2Array(5, -17, 15, -9, 29, 21, 26, 28, 17, 30, 10, 27, -1, 29, -10, 31, -15, 25, -20, 19, -16, 11, -14, 4, -10, -4, -3, -10, 2, -15)
+
+[node name="Zanga(No escenear)8" type="Node2D" parent="Daños/Node2D" unique_id=1310987415]
+position = Vector2(219, -1590)
+
+[node name="Rock" type="Sprite2D" parent="Daños/Node2D/Zanga(No escenear)8" unique_id=1061771899]
+position = Vector2(8, 8)
+texture = ExtResource("15_rbsd7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Daños/Node2D/Zanga(No escenear)8" unique_id=619396128]
+script = ExtResource("16_vel7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Daños/Node2D/Zanga(No escenear)8/StaticBody2D" unique_id=484788823]
+shape = SubResource("RectangleShape2D_01jfn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Daños/Node2D/Zanga(No escenear)8/StaticBody2D" unique_id=1118777672]
+polygon = PackedVector2Array(5, -17, 15, -9, 29, 21, 26, 28, 17, 30, 10, 27, -1, 29, -10, 31, -15, 25, -20, 19, -16, 11, -14, 4, -10, -4, -3, -10, 2, -15)
+
+[node name="Zanga(No escenear)9" type="Node2D" parent="Daños/Node2D" unique_id=949601319]
+position = Vector2(270, -1590)
+
+[node name="Rock" type="Sprite2D" parent="Daños/Node2D/Zanga(No escenear)9" unique_id=1712483232]
+position = Vector2(8, 8)
+texture = ExtResource("15_rbsd7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Daños/Node2D/Zanga(No escenear)9" unique_id=965135991]
+script = ExtResource("16_vel7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Daños/Node2D/Zanga(No escenear)9/StaticBody2D" unique_id=2089078960]
+shape = SubResource("RectangleShape2D_01jfn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Daños/Node2D/Zanga(No escenear)9/StaticBody2D" unique_id=394312277]
+polygon = PackedVector2Array(5, -17, 15, -9, 29, 21, 26, 28, 17, 30, 10, 27, -1, 29, -10, 31, -15, 25, -20, 19, -16, 11, -14, 4, -10, -4, -3, -10, 2, -15)
+
+[node name="Zanga(No escenear)10" type="Node2D" parent="Daños/Node2D" unique_id=855879500]
+position = Vector2(318, -1591)
+
+[node name="Rock" type="Sprite2D" parent="Daños/Node2D/Zanga(No escenear)10" unique_id=2081095942]
+position = Vector2(8, 8)
+texture = ExtResource("15_rbsd7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Daños/Node2D/Zanga(No escenear)10" unique_id=1926960767]
+script = ExtResource("16_vel7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Daños/Node2D/Zanga(No escenear)10/StaticBody2D" unique_id=566100119]
+shape = SubResource("RectangleShape2D_01jfn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Daños/Node2D/Zanga(No escenear)10/StaticBody2D" unique_id=1918926255]
+polygon = PackedVector2Array(5, -17, 15, -9, 29, 21, 26, 28, 17, 30, 10, 27, -1, 29, -10, 31, -15, 25, -20, 19, -16, 11, -14, 4, -10, -4, -3, -10, 2, -15)
+
+[node name="Zanga(No escenear)11" type="Node2D" parent="Daños/Node2D" unique_id=500336616]
+position = Vector2(369, -1591)
+
+[node name="Rock" type="Sprite2D" parent="Daños/Node2D/Zanga(No escenear)11" unique_id=526569022]
+position = Vector2(8, 8)
+texture = ExtResource("15_rbsd7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Daños/Node2D/Zanga(No escenear)11" unique_id=1696782238]
+script = ExtResource("16_vel7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Daños/Node2D/Zanga(No escenear)11/StaticBody2D" unique_id=1571610153]
+shape = SubResource("RectangleShape2D_01jfn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Daños/Node2D/Zanga(No escenear)11/StaticBody2D" unique_id=1106667697]
+polygon = PackedVector2Array(5, -17, 15, -9, 29, 21, 26, 28, 17, 30, 10, 27, -1, 29, -10, 31, -15, 25, -20, 19, -16, 11, -14, 4, -10, -4, -3, -10, 2, -15)
+
+[node name="Zanga(No escenear)12" type="Node2D" parent="Daños/Node2D" unique_id=581635837]
+position = Vector2(417, -1591)
+
+[node name="Rock" type="Sprite2D" parent="Daños/Node2D/Zanga(No escenear)12" unique_id=1418462107]
+position = Vector2(8, 8)
+texture = ExtResource("15_rbsd7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Daños/Node2D/Zanga(No escenear)12" unique_id=1470558415]
+script = ExtResource("16_vel7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Daños/Node2D/Zanga(No escenear)12/StaticBody2D" unique_id=838697264]
+shape = SubResource("RectangleShape2D_01jfn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Daños/Node2D/Zanga(No escenear)12/StaticBody2D" unique_id=1987510583]
+polygon = PackedVector2Array(5, -17, 15, -9, 29, 21, 26, 28, 17, 30, 10, 27, -1, 29, -10, 31, -15, 25, -20, 19, -16, 11, -14, 4, -10, -4, -3, -10, 2, -15)
+
+[node name="Zanga(No escenear)13" type="Node2D" parent="Daños/Node2D" unique_id=1503332323]
+position = Vector2(468, -1591)
+
+[node name="Rock" type="Sprite2D" parent="Daños/Node2D/Zanga(No escenear)13" unique_id=102584304]
+position = Vector2(8, 8)
+texture = ExtResource("15_rbsd7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Daños/Node2D/Zanga(No escenear)13" unique_id=1886591761]
+script = ExtResource("16_vel7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Daños/Node2D/Zanga(No escenear)13/StaticBody2D" unique_id=1173107539]
+shape = SubResource("RectangleShape2D_01jfn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Daños/Node2D/Zanga(No escenear)13/StaticBody2D" unique_id=664871690]
+polygon = PackedVector2Array(5, -17, 15, -9, 29, 21, 26, 28, 17, 30, 10, 27, -1, 29, -10, 31, -15, 25, -20, 19, -16, 11, -14, 4, -10, -4, -3, -10, 2, -15)
+
+[node name="Zanga(No escenear)14" type="Node2D" parent="Daños/Node2D" unique_id=1114139650]
+position = Vector2(515, -1593)
+
+[node name="Rock" type="Sprite2D" parent="Daños/Node2D/Zanga(No escenear)14" unique_id=1559343781]
+position = Vector2(8, 8)
+texture = ExtResource("15_rbsd7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Daños/Node2D/Zanga(No escenear)14" unique_id=1920525801]
+script = ExtResource("16_vel7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Daños/Node2D/Zanga(No escenear)14/StaticBody2D" unique_id=1512536762]
+shape = SubResource("RectangleShape2D_01jfn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Daños/Node2D/Zanga(No escenear)14/StaticBody2D" unique_id=103041588]
+polygon = PackedVector2Array(5, -17, 15, -9, 29, 21, 26, 28, 17, 30, 10, 27, -1, 29, -10, 31, -15, 25, -20, 19, -16, 11, -14, 4, -10, -4, -3, -10, 2, -15)
+
+[node name="Zanga(No escenear)15" type="Node2D" parent="Daños/Node2D" unique_id=2018383959]
+position = Vector2(566, -1593)
+
+[node name="Rock" type="Sprite2D" parent="Daños/Node2D/Zanga(No escenear)15" unique_id=1751976065]
+position = Vector2(8, 8)
+texture = ExtResource("15_rbsd7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Daños/Node2D/Zanga(No escenear)15" unique_id=1911881763]
+script = ExtResource("16_vel7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Daños/Node2D/Zanga(No escenear)15/StaticBody2D" unique_id=736776417]
+shape = SubResource("RectangleShape2D_01jfn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Daños/Node2D/Zanga(No escenear)15/StaticBody2D" unique_id=123207951]
+polygon = PackedVector2Array(5, -17, 15, -9, 29, 21, 26, 28, 17, 30, 10, 27, -1, 29, -10, 31, -15, 25, -20, 19, -16, 11, -14, 4, -10, -4, -3, -10, 2, -15)
+
+[node name="Zanga(No escenear)16" type="Node2D" parent="Daños/Node2D" unique_id=576065764]
+position = Vector2(563, -1595)
+
+[node name="Rock" type="Sprite2D" parent="Daños/Node2D/Zanga(No escenear)16" unique_id=1136535507]
+position = Vector2(8, 8)
+texture = ExtResource("15_rbsd7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Daños/Node2D/Zanga(No escenear)16" unique_id=1336045937]
+script = ExtResource("16_vel7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Daños/Node2D/Zanga(No escenear)16/StaticBody2D" unique_id=563984022]
+shape = SubResource("RectangleShape2D_01jfn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Daños/Node2D/Zanga(No escenear)16/StaticBody2D" unique_id=694825688]
+polygon = PackedVector2Array(5, -17, 15, -9, 29, 21, 26, 28, 17, 30, 10, 27, -1, 29, -10, 31, -15, 25, -20, 19, -16, 11, -14, 4, -10, -4, -3, -10, 2, -15)
+
+[node name="Zanga(No escenear)17" type="Node2D" parent="Daños/Node2D" unique_id=81593613]
+position = Vector2(614, -1595)
+
+[node name="Rock" type="Sprite2D" parent="Daños/Node2D/Zanga(No escenear)17" unique_id=446661599]
+position = Vector2(8, 8)
+texture = ExtResource("15_rbsd7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Daños/Node2D/Zanga(No escenear)17" unique_id=1297374326]
+script = ExtResource("16_vel7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Daños/Node2D/Zanga(No escenear)17/StaticBody2D" unique_id=561121909]
+shape = SubResource("RectangleShape2D_01jfn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Daños/Node2D/Zanga(No escenear)17/StaticBody2D" unique_id=1749101701]
+polygon = PackedVector2Array(5, -17, 15, -9, 29, 21, 26, 28, 17, 30, 10, 27, -1, 29, -10, 31, -15, 25, -20, 19, -16, 11, -14, 4, -10, -4, -3, -10, 2, -15)
 
 [node name="Azucar" type="Node2D" parent="." unique_id=1872341896]
 

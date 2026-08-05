@@ -3,7 +3,7 @@ extends Node
 
 func save_player(player: Node):
 	var data := {}
-
+	data["scene"] = get_tree().current_scene.scene_file_path
 	# Datos básicos
 	data["position"] = player.global_position
 	data["scale"] = player.scale
@@ -33,7 +33,7 @@ func load_player(player: Node):
 
 
 	# Posición
-	if data.has("position"):
+	if data.has("position") and data.has("scene") and data["scene"] == get_tree().current_scene.scene_file_path:
 		player.global_position = data["position"]
 
 

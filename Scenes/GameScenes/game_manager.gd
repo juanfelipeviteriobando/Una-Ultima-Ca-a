@@ -5,7 +5,8 @@ var checkpoint_data: Dictionary = {}
 
 
 func save_checkpoint(data: Dictionary):
-	checkpoint_data = data.duplicate(true)
+	for key in data:
+		checkpoint_data[key] = data[key]
 	print("Checkpoint guardado:", checkpoint_data)
 
 
